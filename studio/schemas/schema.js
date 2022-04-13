@@ -4,6 +4,7 @@ import createSchema from 'part:@sanity/base/schema-creator';
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 import blockContent from './blockContent';
+import cover from './cover';
 import book from './documents/book';
 import author from './documents/author';
 import series from './documents/series';
@@ -22,6 +23,7 @@ export default createSchema({
     series,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
+    cover,
     blockContent,
   ]),
 });
