@@ -5,7 +5,7 @@ const Reel = ({ array }) => {
     <ul>
       {array.map(({ _id, title, slug, cover }) => (
         <li key={_id}>
-          <Card title={title} slug={slug.current} cover={cover.asset} />
+          <Card title={title} slug={slug} cover={cover} />
         </li>
       ))}
     </ul>

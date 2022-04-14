@@ -39,11 +39,11 @@ export async function getStaticProps() {
   });
 
   const books = data.allBook.map((book) => {
-    const cover = book.cover ? book.cover.asset : null;
+    const cover = book.cover ? book.cover : null;
 
     return {
       title: book.title,
-      slug: book.slug.current,
+      slug: book.slug,
       cover,
     };
   });
