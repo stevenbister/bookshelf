@@ -1,18 +1,14 @@
-import Head from 'next/head'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import Header from './Header'
+import Footer from './Footer'
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   return (
     <>
-      <Head>
-        <title>Bookshelf</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <Header />
       <main>{children}</main>
       <Footer />
     </>
   )
 }
+
+export default Layout

@@ -1,9 +1,14 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import getSanityContent from 'src/lib/sanity'
 
 export default function Home({books}) {
   return (
     <>
+      <Head>
+        <title>Bookshelf</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <ul>
         {books.map(({ title, slug }) => (
           <li key={slug}>
