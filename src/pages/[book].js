@@ -1,9 +1,17 @@
-import getSanityContent from '@lib/sanity'
-import Link from 'next/link'
-import Image from 'next/image'
-import {PortableText} from '@portabletext/react'
+import getSanityContent from '@lib/sanity';
+import Image from 'next/image';
+import { PortableText } from '@portabletext/react';
+import Reel from '@/components/Reel';
 
-export default function Book ({title, author, series, blurb, cover, readStatus, related}) {
+export default function Book({
+  title,
+  author,
+  series,
+  blurb,
+  cover,
+  readStatus,
+  related,
+}) {
   return (
     <>
       {title ? <h1>{title}</h1> : null}
@@ -11,29 +19,20 @@ export default function Book ({title, author, series, blurb, cover, readStatus, 
       {author ? <p>{author}</p> : null}
       {readStatus ? <p>{readStatus}</p> : null}
 
-      {cover ? <Image src={cover.url} alt={cover.altText} width="320" height="500" /> : null}
+      {cover ? (
+        <Image src={cover.url} alt={cover.altText} width="320" height="500" />
+      ) : null}
 
       {blurb ? <PortableText value={blurb} /> : null}
 
-      {related ?
+      {related ? (
         <>
           <h2>More books in this series...</h2>
-          <ul>
-            {related.map(({_id, title, slug, cover}) => (
-              <li key={_id}>
-                <Link href={`/${slug.current}`}>
-                  <a>
-                    <Image src={cover.asset.url} alt={cover.asset.altText} width="160" height="250" />
-                    <h3>{title}</h3>
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Reel array={related} />
         </>
-      : null}
+      ) : null}
     </>
-  )
+  );
 }
 
 export async function getStaticProps({ params }) {
@@ -61,16 +60,16 @@ export async function getStaticProps({ params }) {
       }
     `,
     variables: {
-      slug: params.book
+      slug: params.book,
     },
-  })
+  });
 
-  const [book] = BookBySlug.allBook
+  const [book] = BookBySlug.allBook;
 
-  const {title, blurbRaw: blurb, readStatus} = book
-  const author = book.author ? book.author.name : null
-  const series = book.series ? book.series.name : null
-  const cover = book.cover ? book.cover.asset : null
+  const { title, blurbRaw: blurb, readStatus } = book;
+  const author = book.author ? book.author.name : null;
+  const series = book.series ? book.series.name : null;
+  const cover = book.cover ? book.cover.asset : null;
 
   // Get related books
   const BooksBySeries = await getSanityContent({
@@ -92,11 +91,11 @@ export async function getStaticProps({ params }) {
       }
     `,
     variables: {
-      series
-    }
-  })
+      series,
+    },
+  });
 
-  const related = BooksBySeries ? BooksBySeries.allBook : null
+  const related = BooksBySeries ? BooksBySeries.allBook : null;
 
   return {
     props: {
@@ -106,9 +105,9 @@ export async function getStaticProps({ params }) {
       blurb,
       cover,
       readStatus,
-      related
-    }
-  }
+      related,
+    },
+  };
 }
 
 export async function getStaticPaths() {
@@ -121,14 +120,13 @@ export async function getStaticPaths() {
           }
         }
       }
-    `
-  })
+    `,
+  });
 
-  const books = data.allBook
+  const books = data.allBook;
 
   return {
     paths: books.map((book) => `/${book.slug.current}`),
     fallback: false,
   };
 }
-
