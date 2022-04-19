@@ -32,6 +32,12 @@ export default {
       to: [{ type: 'series' }],
     },
     {
+      name: 'bookNumber',
+      title: 'Book number',
+      type: 'number',
+      hidden: ({ document }) => !document?.series, // Only show field if the series field is truthy
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'reference',
