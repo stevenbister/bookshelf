@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "sanity": "cd studio && sanity start",
+    "sanity:update": "cd studio && sanity graphql deploy",
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch"
