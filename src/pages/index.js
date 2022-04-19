@@ -42,6 +42,7 @@ export async function getStaticProps() {
     const cover = book.cover ? book.cover : null;
 
     return {
+      _id: book._id,
       title: book.title,
       slug: book.slug,
       cover,
