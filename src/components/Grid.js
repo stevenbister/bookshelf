@@ -1,8 +1,9 @@
+import styles from '@styles/Grid.module.css';
 import Card from './Card';
 
 const Grid = ({ array }) => {
   return (
-    <ul>
+    <ul className={styles.grid} role="list">
       {array.map(({ _id, title, slug, cover }) => (
         <li key={_id}>
           <Card title={title} slug={slug} cover={cover} />
