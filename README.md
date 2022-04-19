@@ -7,8 +7,10 @@ This project uses [Sanity](https://www.sanity.io/docs/getting-started) as the CM
 To access the api add the project ID to a `.env` file
 
 ```bash
-NEXT_PUBLIC_SANITY_PROJECT_ID=<your project ID>
+SANITY_PROJECT_ID=<your project ID>
 ```
+
+Don't forget to update this ID within the sanity.json file either
 
 ## Next
 
