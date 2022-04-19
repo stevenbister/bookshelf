@@ -75,7 +75,10 @@ export async function getStaticProps({ params }) {
   const BooksBySeries = await getSanityContent({
     query: `
       query BooksBySeries($series: String!) {
-        allBook(where: { series: { name: { eq: $series } } }) {
+        allBook(
+          where: { series: { name: { eq: $series } } },
+          sort: { bookNumber: ASC }
+        ) {
           _id
           title
           slug {
