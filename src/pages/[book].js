@@ -2,6 +2,7 @@ import getSanityContent from '@lib/sanity';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 import Reel from '@/components/Reel';
+import Sidebar from '@/components/Sidebar';
 
 export default function Book({
   title,
@@ -14,16 +15,19 @@ export default function Book({
 }) {
   return (
     <>
-      {title ? <h1>{title}</h1> : null}
-      {series ? <p>{series}</p> : null}
-      {author ? <p>{author}</p> : null}
-      {readStatus ? <p>{readStatus}</p> : null}
+      <Sidebar>
+        {cover ? (
+          <Image src={cover.url} alt={cover.altText} width="320" height="500" />
+        ) : null}
 
-      {cover ? (
-        <Image src={cover.url} alt={cover.altText} width="320" height="500" />
-      ) : null}
-
-      {blurb ? <PortableText value={blurb} /> : null}
+        <div>
+          {title ? <h1>{title}</h1> : null}
+          {series ? <p>{series}</p> : null}
+          {author ? <p>{author}</p> : null}
+          {readStatus ? <p>{readStatus}</p> : null}
+          {blurb ? <PortableText value={blurb} /> : null}
+        </div>
+      </Sidebar>
 
       {related ? (
         <>
