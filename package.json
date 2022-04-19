@@ -9,6 +9,7 @@
     "start": "next start",
     "sanity": "cd studio && sanity start",
     "lint": "next lint",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
