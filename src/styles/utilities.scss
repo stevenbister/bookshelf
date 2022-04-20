@@ -1,0 +1,12 @@
+@for $i from -2 through 5 {
+  .fs-#{$i} {
+    font-size: var(--step-#{$i});
+  }
+}
+
+$weights: 400, 600, 900;
+@each $weight in $weights {
+  .fw-#{$weight} {
+    font-weight: #{$weight};
+  }
+}
