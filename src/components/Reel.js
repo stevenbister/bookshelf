@@ -1,4 +1,4 @@
-import styles from '@styles/Reel.module.css';
+import styles from '@styles/Reel.module.scss';
 import { useState, useEffect, useRef } from 'react';
 import Card from './Card';
 

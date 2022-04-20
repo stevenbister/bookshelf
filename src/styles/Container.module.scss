@@ -1,0 +1,5 @@
+.container {
+  --container-width: 82vw;
+  margin-inline: auto;
+  width: clamp(16rem, var(--container-width), 101.875rem);
+}

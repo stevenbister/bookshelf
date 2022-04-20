@@ -1,4 +1,4 @@
-import styles from '@styles/Grid.module.css';
+import styles from '@styles/Grid.module.scss';
 import Card from './Card';
 
 const Grid = ({ array }) => {
