@@ -1,11 +1,22 @@
-import Link from "next/link"
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import styles from '@styles/Header.module.scss';
 
 const Header = () => {
-  return (
-    <header>
-      <Link href='/'>Bookshelf</Link>
-    </header>
-  )
-}
+  const router = useRouter();
 
-export default Header
+  return (
+    <header className={styles.header}>
+      <Link href="/">
+        <a
+          className={router.asPath === '/' ? 'fs-4' : 'fs-3'}
+          aria-current={router.asPath === '/' ? 'page' : ''}
+        >
+          Bookshelf
+        </a>
+      </Link>
+    </header>
+  );
+};
+
+export default Header;
