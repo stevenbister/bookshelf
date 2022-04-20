@@ -22,8 +22,8 @@ export default function Book({
 
         <div>
           {title ? <h1>{title}</h1> : null}
-          {series ? <p>{series}</p> : null}
-          {author ? <p>{author}</p> : null}
+          {series ? <p className="fs-3 fw-600">{series}</p> : null}
+          {author ? <p className="fs-2 fw-600">{author}</p> : null}
           {readStatus ? <p>{readStatus}</p> : null}
           {blurb ? <PortableText value={blurb} /> : null}
         </div>
