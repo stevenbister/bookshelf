@@ -1,16 +1,17 @@
 .sidebar {
   display: flex;
   flex-wrap: wrap;
-  gap: 6.25rem;
+  gap: var(--space-xl-2xl);
 }
 
 .sidebar > :first-child {
-  flex-basis: 28rem;
+  flex-basis: clamp(18rem, 30vw, 21rem);
   flex-grow: 1;
+  align-self: flex-start;
 }
 
 .sidebar > :last-child {
   flex-basis: 0;
   flex-grow: 999;
-  min-inline-size: 50%;
+  min-inline-size: 42%;
 }

@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from '@styles/Header.module.scss';
 
 const Header = () => {
   const router = useRouter();
 
   return (
-    <header className={styles.header}>
+    <header className="header">
       <Link href="/">
         <a
           className={router.asPath === '/' ? 'fs-4' : 'fs-3'}

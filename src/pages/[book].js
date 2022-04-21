@@ -17,7 +17,13 @@ export default function Book({
     <>
       <Sidebar>
         {cover ? (
-          <Image src={cover.url} alt={cover.altText} width="320" height="500" />
+          <Image
+            src={cover.url}
+            alt={cover.altText}
+            width="320"
+            height="500"
+            layout="responsive"
+          />
         ) : null}
 
         <div>
