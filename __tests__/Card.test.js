@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import fakeData from '../__mocks__/fakeData';
-import Card from '@/components/Card';
+import Card from '@/components/Card/Card';
 
 const setup = ({ cover }) => {
   const { title } = fakeData.allBook[1];

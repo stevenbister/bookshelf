@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import Card from './Card';
+import Card from './Card/Card';
 
 const Reel = ({ array }) => {
   const ref = useRef(null);
