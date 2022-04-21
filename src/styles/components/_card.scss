@@ -1,0 +1,12 @@
+.card {
+  position: relative;
+  width: 14.375rem;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card__heading {
+  margin-top: var(--space-s);
+}

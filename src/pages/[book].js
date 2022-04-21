@@ -26,20 +26,38 @@ export default function Book({
           />
         ) : null}
 
-        <div>
+        <div className="stack">
           {title ? <h1>{title}</h1> : null}
-          {series ? <p className="fs-3 fw-600">{series}</p> : null}
-          {author ? <p className="fs-2 fw-600">{author}</p> : null}
-          {readStatus ? <p>{readStatus}</p> : null}
-          {blurb ? <PortableText value={blurb} /> : null}
+          {series ? (
+            <p
+              className="fs-3 fw-600 lh-1"
+              style={{ '--stack-space': 'var(--space-s)' }}
+            >
+              {series}
+            </p>
+          ) : null}
+          {author ? (
+            <p
+              className="fs-2 fw-600 lh-1"
+              style={{ '--stack-space': 'var(--space-2xs)' }}
+            >
+              {author}
+            </p>
+          ) : null}
+
+          {/* {readStatus ? <p>{readStatus}</p> : null} */}
+
+          <div className="stack" style={{ marginTop: 'var(--space-l)' }}>
+            {blurb ? <PortableText value={blurb} /> : null}
+          </div>
         </div>
       </Sidebar>
 
       {related ? (
-        <>
+        <div style={{ marginTop: 'var(--space-xl-2xl)' }}>
           <h2>More books in this series...</h2>
           <Reel array={related} />
-        </>
+        </div>
       ) : null}
     </>
   );

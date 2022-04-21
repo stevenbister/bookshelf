@@ -1,6 +1,26 @@
+@use 'sass:string';
+
 @for $i from -2 through 5 {
   .fs-#{$i} {
     font-size: var(--step-#{$i});
+  }
+}
+
+$line-heights: '1', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7', '1.8',
+  '1.9', '2';
+@each $lh in $line-heights {
+  $lh-tenth: string.slice($lh, 1, 1);
+
+  @if string.length($lh) > 1 {
+    $lh-decimal: string.slice($lh, 3, 3);
+
+    .lh-#{$lh-tenth}-#{$lh-decimal} {
+      line-height: #{$lh};
+    }
+  } @else {
+    .lh-#{$lh-tenth} {
+      line-height: #{$lh};
+    }
   }
 }
 
@@ -9,4 +29,21 @@ $weights: 400, 600, 900;
   .fw-#{$weight} {
     font-weight: #{$weight};
   }
+}
+
+$colors: 'dark', 'light', 'primary', 'secondary';
+@each $color in $colors {
+  .color-#{$color} {
+    color: var(--color-#{$color});
+  }
+}
+
+.stack > * + * {
+  margin-top: var(--stack-space, 0.5em);
+}
+
+.stretch-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }

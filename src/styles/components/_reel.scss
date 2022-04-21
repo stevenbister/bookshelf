@@ -1,6 +1,6 @@
 .reel {
-  --scrollbar-background: var(--color-primary);
-  --scrollbar-foreground: var(--color-secondary);
+  --scrollbar-background: var(--color-secondary);
+  --scrollbar-foreground: var(--color-primary);
 
   display: flex;
   block-size: auto;
@@ -33,7 +33,7 @@
 }
 
 .reel > * + * {
-  margin-inline-start: 1rem;
+  margin-inline-start: var(--space-l-xl);
 }
 
 .reel.overflowing {
