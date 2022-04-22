@@ -30,6 +30,10 @@ export async function getStaticProps() {
           slug {
             current
           }
+          series {
+            name
+          }
+          bookNumber
           cover {
             asset {
               url
@@ -44,16 +48,33 @@ export async function getStaticProps() {
   const books = data.allBook
     .map((book) => {
       const cover = book.cover ? book.cover : null;
+      const series = book.series ? book.series.name : null;
 
       return {
         _id: book._id,
         title: book.title,
         author: book.author.name,
         slug: book.slug,
+        series,
+        bookNumber: book.bookNumber,
         cover,
       };
     })
-    .sort((a, b) => a.author.localeCompare(b.author));
+    .sort((a, b) => {
+      // Sort author alphabetically
+      // If the first item comes first in the alphabet, move it up
+      // Otherwise move it down
+      if (a.author > b.author) return 1;
+      if (a.author < b.author) return -1;
+
+      // The sort by the series
+      if (a.series > b.series) return 1;
+      if (a.series < b.series) return -1;
+
+      // Finally order the series by book number
+      if (a.bookNumber > b.bookNumber) return 1;
+      if (a.bookNumber < b.bookNumber) return -1;
+    });
 
   const total = books.length;
 
