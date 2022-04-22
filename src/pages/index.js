@@ -24,6 +24,9 @@ export async function getStaticProps() {
         allBook {
           _id
           title
+          author {
+            name
+          }
           slug {
             current
           }
@@ -38,18 +41,24 @@ export async function getStaticProps() {
     `,
   });
 
-  const books = data.allBook.map((book) => {
-    const cover = book.cover ? book.cover : null;
+  const books = data.allBook
+    .map((book) => {
+      const cover = book.cover ? book.cover : null;
+      const series = book.series ? book.series.name : null;
 
-    return {
-      _id: book._id,
-      title: book.title,
-      slug: book.slug,
-      cover,
-    };
-  });
+      return {
+        _id: book._id,
+        title: book.title,
+        author: book.author.name,
+        slug: book.slug,
+        series: series,
+        bookNumber: book?.bookNumber,
+        cover,
+      };
+    })
+    .sort((a, b) => a.author.localeCompare(b.author));
 
-  const total = data.allBook.length;
+  const total = books.length;
 
   return {
     props: { books, total },
