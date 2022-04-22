@@ -44,15 +44,12 @@ export async function getStaticProps() {
   const books = data.allBook
     .map((book) => {
       const cover = book.cover ? book.cover : null;
-      const series = book.series ? book.series.name : null;
 
       return {
         _id: book._id,
         title: book.title,
         author: book.author.name,
         slug: book.slug,
-        series: series,
-        bookNumber: book?.bookNumber,
         cover,
       };
     })
