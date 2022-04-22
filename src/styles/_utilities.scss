@@ -1,5 +1,8 @@
 @use 'sass:string';
 
+/* ---------------------------------------
+  Typography
+--------------------------------------- */
 @for $i from -2 through 5 {
   .fs-#{$i} {
     font-size: var(--step-#{$i});
@@ -38,12 +41,22 @@ $colors: 'dark', 'light', 'primary', 'secondary';
   }
 }
 
+/* ---------------------------------------
+  Spacing
+--------------------------------------- */
 .stack > * + * {
   margin-top: var(--stack-space, 0.5em);
 }
 
-.stretch-link::after {
-  content: '';
+/* ---------------------------------------
+  A11y
+--------------------------------------- */
+.sr-only {
   position: absolute;
-  inset: 0;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  white-space: nowrap;
 }
