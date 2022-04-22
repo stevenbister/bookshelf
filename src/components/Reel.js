@@ -1,6 +1,5 @@
-import styles from '@styles/Reel.module.css';
 import { useState, useEffect, useRef } from 'react';
-import Card from './Card';
+import Card from './Card/Card';
 
 const Reel = ({ array }) => {
   const ref = useRef(null);
@@ -34,7 +33,7 @@ const Reel = ({ array }) => {
   });
 
   return (
-    <ul className={`${styles.reel} ${overflowClass}`} ref={ref} role="list">
+    <ul className={`reel ${overflowClass}`} ref={ref} role="list">
       {array.map(({ _id, title, slug, cover }) => (
         <li key={_id}>
           <Card title={title} slug={slug} cover={cover} />

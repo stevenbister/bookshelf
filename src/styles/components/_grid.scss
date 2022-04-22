@@ -1,6 +1,6 @@
 .grid {
-  --min: 15ch;
-  --gap: 1rem;
+  --min: var(--card-width);
+  --gap: var(--space-l-xl);
 
   display: grid;
   grid-gap: var(--gap);
