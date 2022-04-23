@@ -1,6 +1,10 @@
 .card {
+  background-color: none;
+  padding: 0;
+  border: none;
   position: relative;
   width: 100%;
+  cursor: pointer;
 }
 
 .card a {

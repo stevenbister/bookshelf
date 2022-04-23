@@ -7,4 +7,9 @@
   /* min() with 100% prevents overflow
   in extra narrow spaces */
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+  grid-auto-flow: dense;
+}
+
+.grid__item--full-width {
+  grid-column: 1 / -1;
 }
