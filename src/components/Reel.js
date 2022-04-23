@@ -35,9 +35,7 @@ const Reel = ({ array }) => {
   return (
     <ul className={`reel ${overflowClass}`} ref={ref} role="list">
       {array.map(({ _id, title, slug, cover }) => (
-        <li key={_id}>
-          <Card title={title} slug={slug} cover={cover} />
-        </li>
+        <Card key={_id} title={title} slug={slug} cover={cover} />
       ))}
     </ul>
   );
