@@ -1,8 +1,17 @@
 import CardImage from './CardImage';
 
-const ExpandableCard = ({ title, cover, expanded, ariaControls, onClick }) => {
+const ExpandableCard = ({
+  title,
+  cover,
+  relatedBooks,
+  expanded,
+  ariaControls,
+  onClick,
+}) => {
+  const numberOfBooks = relatedBooks.length;
+
   return (
-    <li>
+    <li className="relative">
       <button
         className="card"
         style={{ width: '100%' }}
@@ -13,6 +22,10 @@ const ExpandableCard = ({ title, cover, expanded, ariaControls, onClick }) => {
         <CardImage image={cover} />
 
         <h3 className="sr-only card__heading fs-1">{title}</h3>
+
+        <div className="card__stack"></div>
+        {numberOfBooks >= 3 ? <div className="card__stack"></div> : null}
+        {numberOfBooks >= 4 ? <div className="card__stack"></div> : null}
       </button>
     </li>
   );

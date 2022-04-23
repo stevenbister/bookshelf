@@ -18,6 +18,7 @@ const Grid = ({ array }) => {
                 key={_id}
                 title={title}
                 cover={cover}
+                relatedBooks={relatedBooks}
                 expanded={expanded}
                 ariaControls={kebabCase(series)}
                 onClick={() => {

@@ -11,6 +11,29 @@
   text-decoration: none;
 }
 
+.card img {
+  z-index: 1;
+}
+
 .card__heading {
   margin-top: var(--space-s);
+}
+
+.card__stack {
+  background-color: rgba(34, 34, 34, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -0.5rem;
+  right: -0.5rem;
+}
+
+.card__stack:nth-of-type(2) {
+  top: -1rem;
+  right: -1rem;
+}
+
+.card__stack:nth-of-type(3) {
+  top: -1.5rem;
+  right: -1.5rem;
 }
