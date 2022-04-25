@@ -6,41 +6,42 @@ import ExpandableContent from './Card/ExpandableContent';
 
 const Grid = ({ array }) => {
   const [openSeries, setOpenSeries] = useState('');
-  const [expanded, setExpaneded] = useState(false);
 
   return (
     <ul className="grid" role="list">
-      {array.map(({ _id, title, slug, cover, series, relatedBooks }) => (
-        <>
-          {relatedBooks ? (
-            <>
-              <ExpandableCard
-                key={_id}
-                title={title}
-                cover={cover}
-                relatedBooks={relatedBooks}
-                expanded={expanded}
-                ariaControls={kebabCase(series)}
-                onClick={() => {
-                  series === openSeries
-                    ? setOpenSeries('')
-                    : setOpenSeries(series),
-                    expanded ? setExpaneded(false) : setExpaneded(true);
-                }}
-              />
+      {array.map(({ _id, title, slug, cover, series, relatedBooks }) => {
+        const numberOfBooks = relatedBooks?.length;
 
-              <ExpandableContent
-                id={kebabCase(series)}
-                series={series}
-                openSeries={openSeries}
-                relatedBooks={relatedBooks}
-              />
-            </>
-          ) : (
-            <Card key={_id} title={title} slug={slug} cover={cover} />
-          )}
-        </>
-      ))}
+        return (
+          <>
+            {relatedBooks ? (
+              <>
+                <ExpandableCard
+                  key={_id}
+                  title={title}
+                  cover={cover}
+                  numberOfBooks={numberOfBooks}
+                  ariaControls={kebabCase(series)}
+                  onClick={() => {
+                    series === openSeries
+                      ? setOpenSeries('')
+                      : setOpenSeries(series);
+                  }}
+                />
+
+                <ExpandableContent
+                  id={kebabCase(series)}
+                  series={series}
+                  openSeries={openSeries}
+                  relatedBooks={relatedBooks}
+                />
+              </>
+            ) : (
+              <Card key={_id} title={title} slug={slug} cover={cover} />
+            )}
+          </>
+        );
+      })}
     </ul>
   );
 };
