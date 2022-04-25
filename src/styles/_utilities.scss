@@ -42,6 +42,16 @@ $colors: 'dark', 'light', 'primary', 'secondary';
 }
 
 /* ---------------------------------------
+  Position
+--------------------------------------- */
+$position: 'relative', 'absolute', 'sticky', 'fixed';
+@each $pos in $position {
+  .#{$pos} {
+    position: #{$pos};
+  }
+}
+
+/* ---------------------------------------
   Spacing
 --------------------------------------- */
 .stack > * + * {

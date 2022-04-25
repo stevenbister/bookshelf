@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import CardImage from './CardImage';
 
-const Card = ({ title, slug, cover }) => {
-  return (
+const Card = ({ title, slug, cover }) => (
+  <li>
     <Link href={`/${slug.current}`}>
       <a className="color-dark">
         <div className="card">
@@ -12,7 +12,7 @@ const Card = ({ title, slug, cover }) => {
         </div>
       </a>
     </Link>
-  );
-};
+  </li>
+);
 
 export default Card;
