@@ -17,7 +17,7 @@ const Grid = ({ array }) => {
             {relatedBooks ? (
               <>
                 <ExpandableCard
-                  key={_id}
+                  key={kebabCase(series) + '-' + _id}
                   title={title}
                   cover={cover}
                   numberOfBooks={numberOfBooks}
@@ -30,6 +30,7 @@ const Grid = ({ array }) => {
                 />
 
                 <ExpandableContent
+                  key={_id}
                   id={kebabCase(series)}
                   series={series}
                   openSeries={openSeries}
@@ -37,7 +38,12 @@ const Grid = ({ array }) => {
                 />
               </>
             ) : (
-              <Card key={_id} title={title} slug={slug} cover={cover} />
+              <Card
+                key={slug.current + '-' + _id}
+                title={title}
+                slug={slug}
+                cover={cover}
+              />
             )}
           </>
         );
