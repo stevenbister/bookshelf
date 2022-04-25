@@ -1,14 +1,14 @@
+import { useState } from 'react';
 import CardImage from './CardImage';
 
 const ExpandableCard = ({
   title,
   cover,
-  relatedBooks,
-  expanded,
+  numberOfBooks,
   ariaControls,
   onClick,
 }) => {
-  const numberOfBooks = relatedBooks.length;
+  const [expanded, setExpaneded] = useState(false);
 
   return (
     <li className="relative">
@@ -17,7 +17,10 @@ const ExpandableCard = ({
         style={{ width: '100%' }}
         aria-expanded={expanded}
         aria-controls={ariaControls}
-        onClick={onClick}
+        onClick={() => {
+          onClick();
+          expanded ? setExpaneded(false) : setExpaneded(true);
+        }}
       >
         <CardImage image={cover} />
 
