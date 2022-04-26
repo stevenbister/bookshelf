@@ -1,0 +1,28 @@
+.badge {
+  --stack-space: var(--space-2xs);
+  display: inline-flex;
+  padding: 0.25em var(--space-2xs);
+  background-color: var(--color-dark);
+  color: var(--color-light);
+
+  &::before {
+    --tri-size: 4px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: var(--tri-size) solid transparent;
+    border-bottom: var(--tri-size) solid transparent;
+    border-right: var(--tri-size) solid var(--color-dark);
+    position: absolute;
+    left: 0.14em;
+    bottom: -5px;
+    transform: rotate(135deg);
+  }
+}
+
+.card .badge {
+  position: absolute;
+  top: 0;
+  left: -0.3em;
+  z-index: 5;
+}

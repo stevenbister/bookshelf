@@ -34,6 +34,7 @@ export async function getStaticProps() {
             name
           }
           bookNumber
+          readStatus
           cover {
             asset {
               url
@@ -64,6 +65,7 @@ export async function getStaticProps() {
               slug {
                 current
               }
+              readStatus
               cover {
                 asset {
                   url
@@ -99,6 +101,7 @@ export async function getStaticProps() {
           slug: book.slug,
           series,
           bookNumber: book.bookNumber,
+          readStatus: book.readStatus,
           cover,
           relatedBooks,
         };

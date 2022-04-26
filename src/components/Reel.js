@@ -34,12 +34,13 @@ const Reel = ({ array }) => {
 
   return (
     <ul className={`reel ${overflowClass}`} ref={ref} role="list">
-      {array.map(({ _id, title, slug, cover }) => (
+      {array.map(({ _id, title, slug, cover, readStatus }) => (
         <Card
           key={slug.current + '-' + _id}
           title={title}
           slug={slug}
           cover={cover}
+          readStatus={readStatus}
         />
       ))}
     </ul>
