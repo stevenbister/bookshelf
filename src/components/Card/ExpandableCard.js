@@ -55,7 +55,7 @@ const ExpandableCard = ({
               <div key={book.cover.asset.url} className="card__stack">
                 <Image
                   src={book.cover.asset.url}
-                  alt={book.cover.asset.altText}
+                  alt={book.cover.asset.altText ? book.cover.asset.altText : ''}
                   width="160"
                   height="250"
                   layout="responsive"

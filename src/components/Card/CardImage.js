@@ -6,7 +6,7 @@ const CardImage = ({ image }) => (
     {image ? (
       <Image
         src={image.asset.url}
-        alt={image.asset.altText}
+        alt={image.asset.altText ? image.asset.altText : ''}
         width="160"
         height="250"
         layout="responsive"
