@@ -43,6 +43,7 @@ const Grid = ({ array }) => {
                   slug={slug}
                   cover={cover}
                   readStatus={readStatus}
+                  headingLevel="h2"
                 />
               )}
             </>

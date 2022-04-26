@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import CardImage from './CardImage';
+import CardHeader from './CardHeader';
 import ReadStatus from '../ReadStatus';
 import useOutsideClick from 'src/hooks/useOutsideClick';
 
@@ -45,7 +46,7 @@ const ExpandableCard = ({
         <CardImage image={cover} />
         {seriesReadStatus() ? <ReadStatus status={seriesReadStatus()} /> : null}
 
-        <h3 className="sr-only card__heading fs-1">{title}</h3>
+        <CardHeader heading={title} as="h2" />
 
         {relatedBooks.slice(0, 4).map((book, i) => {
           // Skip the first image
