@@ -113,6 +113,7 @@ export async function getStaticProps({ params }) {
           slug {
             current
           }
+          readStatus
           cover {
             asset {
               url
