@@ -56,7 +56,7 @@ export default function Book({
 
       {related ? (
         <div style={{ marginTop: 'var(--space-xl-2xl)' }}>
-          <h2>More books in this series...</h2>
+          <h2>More books in this collection</h2>
           <Reel array={related} />
         </div>
       ) : null}
