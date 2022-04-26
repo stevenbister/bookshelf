@@ -4,6 +4,13 @@
   padding: 0.25em var(--space-2xs);
   background-color: var(--color-dark);
   color: var(--color-light);
+}
+
+.card .badge {
+  position: absolute;
+  top: 0;
+  left: -0.3em;
+  z-index: 5;
 
   &::before {
     --tri-size: 4px;
@@ -18,11 +25,4 @@
     bottom: -5px;
     transform: rotate(135deg);
   }
-}
-
-.card .badge {
-  position: absolute;
-  top: 0;
-  left: -0.3em;
-  z-index: 5;
 }
