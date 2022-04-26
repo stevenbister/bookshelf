@@ -12,8 +12,8 @@ const useOutsideClick = (initialState) => {
 
   const handleClickOutside = (e) => {
     if (
-      // Only fire if the target is an expandable card or it's children
-      e.target.matches('[data-card="expandable"] *') &&
+      // Only fire if the target is an expandable card
+      e.target.matches('[data-card="expandable"]') &&
       ref.current &&
       !ref.current.contains(e.target)
     ) {
