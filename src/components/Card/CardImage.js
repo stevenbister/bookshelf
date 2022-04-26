@@ -2,7 +2,7 @@ import Image from 'next/image';
 import placeholder from '../../../public/img/Placeholder.png';
 
 const CardImage = ({ image }) => (
-  <>
+  <div className="card__image">
     {image ? (
       <Image
         src={image.asset.url}
@@ -20,6 +20,6 @@ const CardImage = ({ image }) => (
         layout="responsive"
       />
     )}
-  </>
+  </div>
 );
 export default CardImage;

@@ -45,6 +45,7 @@ describe('Expandable card', () => {
           key={_id}
           title={title}
           cover={cover}
+          relatedBooks={fakeData.allBook}
           numberOfBooks={3}
           ariaControls={kebabCase(series.name)}
           onClick={jest.fn()}
@@ -52,12 +53,12 @@ describe('Expandable card', () => {
       </ul>,
     );
 
-    const button = screen.getByRole('button', { name: 'The Great Hunt' });
+    const button = screen.getByRole('button', { name: /The Great Hunt/i });
 
     expect(button).toHaveAccessibleName();
     expect(button).toHaveAttribute('aria-controls', 'the-wheel-of-time');
     expect(button).toHaveAttribute('aria-expanded', 'false');
-    expect(screen.getAllByRole('heading', { name: 'The Great Hunt' }));
+    expect(screen.getAllByRole('heading', { name: /The Great Hunt/i }));
 
     userEvent.click(button);
 

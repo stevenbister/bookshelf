@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 import Reel from '@/components/Reel';
 import Sidebar from '@/components/Sidebar';
+import ReadStatus from '@/components/ReadStatus';
 
 export default function Book({
   title,
@@ -45,7 +46,7 @@ export default function Book({
             </p>
           ) : null}
 
-          {/* {readStatus ? <p>{readStatus}</p> : null} */}
+          {readStatus ? <ReadStatus status={readStatus} /> : null}
 
           <div className="stack" style={{ marginTop: 'var(--space-l)' }}>
             {blurb ? <PortableText value={blurb} /> : null}

@@ -9,39 +9,46 @@ const Grid = ({ array }) => {
 
   return (
     <ul className="grid" role="list">
-      {array.map(({ _id, title, slug, cover, series, relatedBooks }) => {
-        const numberOfBooks = relatedBooks?.length;
+      {array.map(
+        ({ _id, title, slug, cover, series, readStatus, relatedBooks }) => {
+          return (
+            <>
+              {relatedBooks ? (
+                <>
+                  <ExpandableCard
+                    key={kebabCase(series) + '-' + _id}
+                    title={title}
+                    cover={cover}
+                    relatedBooks={relatedBooks}
+                    ariaControls={kebabCase(series)}
+                    onClick={() => {
+                      series === openSeries
+                        ? setOpenSeries('')
+                        : setOpenSeries(series);
+                    }}
+                  />
 
-        return (
-          <>
-            {relatedBooks ? (
-              <>
-                <ExpandableCard
-                  key={_id}
+                  <ExpandableContent
+                    key={_id}
+                    id={kebabCase(series)}
+                    series={series}
+                    openSeries={openSeries}
+                    relatedBooks={relatedBooks}
+                  />
+                </>
+              ) : (
+                <Card
+                  key={slug.current + '-' + _id}
                   title={title}
+                  slug={slug}
                   cover={cover}
-                  numberOfBooks={numberOfBooks}
-                  ariaControls={kebabCase(series)}
-                  onClick={() => {
-                    series === openSeries
-                      ? setOpenSeries('')
-                      : setOpenSeries(series);
-                  }}
+                  readStatus={readStatus}
                 />
-
-                <ExpandableContent
-                  id={kebabCase(series)}
-                  series={series}
-                  openSeries={openSeries}
-                  relatedBooks={relatedBooks}
-                />
-              </>
-            ) : (
-              <Card key={_id} title={title} slug={slug} cover={cover} />
-            )}
-          </>
-        );
-      })}
+              )}
+            </>
+          );
+        },
+      )}
     </ul>
   );
 };

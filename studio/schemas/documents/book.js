@@ -50,9 +50,9 @@ export default {
       of: [{ type: 'string' }],
       options: {
         list: [
-          { title: 'Not read', value: 'notRead' },
+          { title: 'Not read', value: 'not read' },
           { title: 'Reading', value: 'reading' },
-          { title: 'Read', value: 'Read' },
+          { title: 'Read', value: 'read' },
         ],
         layout: 'grid',
       },

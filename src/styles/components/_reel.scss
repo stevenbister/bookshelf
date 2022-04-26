@@ -1,10 +1,11 @@
 .reel {
-  --scrollbar-background: var(--color-secondary);
-  --scrollbar-foreground: var(--color-primary);
+  --scrollbar-background: var(--color-light);
+  --scrollbar-foreground: var(--color-dark);
   --min: var(--card-width);
 
   display: flex;
   block-size: auto;
+  padding-inline-start: 0.5rem !important;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
@@ -39,5 +40,5 @@
 }
 
 .reel.overflowing {
-  padding-block-end: 1rem;
+  padding-block-end: 1rem; // Add padding to make space for the scrollbar
 }
