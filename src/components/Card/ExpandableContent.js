@@ -6,9 +6,8 @@ const ExpandableContent = ({ id, series, openSeries, relatedBooks }) => {
       id={id}
       className="grid__item--full-width"
       hidden={series === openSeries ? false : true}
-      style={{ backgroundColor: 'var(--color-grey)' }}
     >
-      <h3>{series}</h3>
+      <h3 style={{ marginBottom: 'var(--space-2xs)' }}>{series}</h3>
       <Reel array={relatedBooks} />
     </li>
   );
