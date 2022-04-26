@@ -1,5 +1,6 @@
 import getSanityContent from '@lib/sanity';
 import Image from 'next/image';
+import Head from 'next/head';
 import { PortableText } from '@portabletext/react';
 import Reel from '@/components/Reel';
 import Sidebar from '@/components/Sidebar';
@@ -16,6 +17,11 @@ export default function Book({
 }) {
   return (
     <>
+      <Head>
+        <title>{title} - Bookshelf</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Sidebar>
         {cover ? (
           <Image
