@@ -6,14 +6,17 @@ const Header = () => {
 
   return (
     <header className="header">
-      <Link href="/">
-        <a
-          className={router.asPath === '/' ? 'fs-4' : 'fs-3'}
-          aria-current={router.asPath === '/' ? 'page' : ''}
-        >
-          Bookshelf
-        </a>
-      </Link>
+      {router.asPath === '/' ? (
+        <h1 className="fs-4 fw-400">
+          <Link href="/">
+            <a aria-current="page">Bookshelf</a>
+          </Link>
+        </h1>
+      ) : (
+        <Link href="/">
+          <a className="fs-3">Bookshelf</a>
+        </Link>
+      )}
     </header>
   );
 };
