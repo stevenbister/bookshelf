@@ -1,6 +1,6 @@
 .reel {
-  --scrollbar-background: var(--color-secondary);
-  --scrollbar-foreground: var(--color-primary);
+  --scrollbar-background: var(--color-light);
+  --scrollbar-foreground: var(--color-dark);
   --min: var(--card-width);
 
   display: flex;
