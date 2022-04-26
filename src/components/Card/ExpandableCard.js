@@ -1,34 +1,53 @@
-import { useState } from 'react';
+import Image from 'next/image';
 import CardImage from './CardImage';
+import useOutsideClick from 'src/hooks/useOutsideClick';
 
 const ExpandableCard = ({
   title,
   cover,
-  numberOfBooks,
+  relatedBooks,
   ariaControls,
   onClick,
 }) => {
-  const [expanded, setExpaneded] = useState(false);
+  const { ref, isComponentClicked, setIsComponentClicked } =
+    useOutsideClick(false);
 
   return (
     <li className="relative">
       <button
-        className="card"
+        className="card shadow"
+        data-card="expandable"
         style={{ width: '100%' }}
-        aria-expanded={expanded}
+        aria-expanded={isComponentClicked}
         aria-controls={ariaControls}
+        ref={ref}
         onClick={() => {
           onClick();
-          expanded ? setExpaneded(false) : setExpaneded(true);
+          isComponentClicked
+            ? setIsComponentClicked(false)
+            : setIsComponentClicked(true);
         }}
       >
         <CardImage image={cover} />
 
         <h3 className="sr-only card__heading fs-1">{title}</h3>
 
-        <div className="card__stack"></div>
-        {numberOfBooks >= 3 ? <div className="card__stack"></div> : null}
-        {numberOfBooks >= 4 ? <div className="card__stack"></div> : null}
+        {relatedBooks.slice(0, 4).map((book, i) => {
+          // Skip the first image
+          if (i > 0) {
+            return (
+              <div key={book.cover.asset.url} className="card__stack">
+                <Image
+                  src={book.cover.asset.url}
+                  alt={book.cover.asset.altText}
+                  width="160"
+                  height="250"
+                  layout="responsive"
+                />
+              </div>
+            );
+          }
+        })}
       </button>
     </li>
   );

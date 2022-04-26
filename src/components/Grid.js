@@ -10,8 +10,6 @@ const Grid = ({ array }) => {
   return (
     <ul className="grid" role="list">
       {array.map(({ _id, title, slug, cover, series, relatedBooks }) => {
-        const numberOfBooks = relatedBooks?.length;
-
         return (
           <>
             {relatedBooks ? (
@@ -20,7 +18,7 @@ const Grid = ({ array }) => {
                   key={kebabCase(series) + '-' + _id}
                   title={title}
                   cover={cover}
-                  numberOfBooks={numberOfBooks}
+                  relatedBooks={relatedBooks}
                   ariaControls={kebabCase(series)}
                   onClick={() => {
                     series === openSeries
