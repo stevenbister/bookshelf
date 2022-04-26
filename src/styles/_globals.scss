@@ -154,8 +154,17 @@ body {
 }
 
 // Set some defaults for typography
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 900;
+  line-height: 1.2;
+}
+
 h1 {
   font-size: var(--step-5);
+  line-height: 1.1;
 }
 
 h2 {
@@ -168,12 +177,4 @@ h3 {
 
 h4 {
   font-size: var(--step-2);
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 900;
-  line-height: 1.2;
 }
