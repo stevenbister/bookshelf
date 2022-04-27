@@ -1,4 +1,4 @@
-const Custom404 = () => {
+const Custom500 = () => {
   return (
     <div
       style={{
@@ -13,4 +13,4 @@ const Custom404 = () => {
   );
 };
 
-export default Custom404;
+export default Custom500;
