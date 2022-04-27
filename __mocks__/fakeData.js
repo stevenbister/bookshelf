@@ -34,6 +34,9 @@ const fakeData = {
         asset: {
           url: 'https://cdn.sanity.io/images/vvmrkra8/production/3a0831dc96a22f3ae304e80e44e76e05e0bcb5c8-319x500.jpg',
           altText: null,
+          metadata: {
+            lqip: 'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAfABQDASIAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAAcEBQgBBv/EACYQAAEDAwQCAQUAAAAAAAAAAAIBAwQAERIFBiExFEEHExUzYXH/xAAXAQADAQAAAAAAAAAAAAAAAAABAgME/8QAHBEAAgEFAQAAAAAAAAAAAAAAAAESAgMTITFB/9oADAMBAAIRAxEAPwCTpmymHtEKdfBUvZpweVSuJpEViNl4pOH6EUpuyYKAZpgBMdpivdQwaFxt9kY6IpIluPdUk3sz40tCg+3OD+WCKEvNr+qKazmy4z5kbxviV7WQvVFHIhMFRS7H3NEnbShvyjwU7qqZ3UV/dWyT9OHJ/wAxwsUyxv1WVNuaq9DaRspKk0XKt2Xj+V69jcsEoRACyCI0UVEl4Sp8XRld8Y1dX+XtEYnG19fJR4VR6orNczSWDkuGkgkQlvbHqikkgyqP/9k=',
+          },
         },
       },
     },
@@ -85,6 +88,9 @@ const fakeData = {
         asset: {
           url: 'https://cdn.sanity.io/images/vvmrkra8/production/a1edf48182cb87b4216d07c05aac08b7ffa9e8d6-636x1000.jpg',
           altText: null,
+          metadata: {
+            lqip: 'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAfABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAUGBAP/xAAkEAACAQQBBAIDAAAAAAAAAAABAgMABBEhEwUGEjFBUSJhkf/EABgBAAIDAAAAAAAAAAAAAAAAAAECAAQF/8QAGxEAAgMAAwAAAAAAAAAAAAAAAAECAxESIlH/2gAMAwEAAhEDEQA/AI/oHZCXXY0nXnu4cIWPAw3gfv7qUYCSZlijQgD69VR9kiCWxa3muJij7aEE+IP3imV70yy5A0cSogz5H0Rj0f7VmD6mPfLLcXhAP05i5yN0U/m4+VjkEnZ3RQ0VWGDtu7a0PmsqocjR+apLzrqzW5jV4kyNkbJqDtntyq+c7qcbAWtnJZiItyuD8fjSRliHvg5WajtJOnI2yd+6KWzXkaviM+Qx7K0VOTCqz//Z',
+          },
         },
       },
     },
@@ -120,6 +126,9 @@ const fakeData = {
         asset: {
           url: 'https://cdn.sanity.io/images/vvmrkra8/production/18338ea6302b1f48ab2e9895ed2b310bb7f86214-1524x2339.jpg',
           altText: null,
+          metadata: {
+            lqip: 'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAfABQDASIAAhEBAxEB/8QAGgAAAwADAQAAAAAAAAAAAAAAAAYHAwQFCP/EACcQAAICAgICAAUFAAAAAAAAAAECAwQABRESBiETMUFRYQcUIjJx/8QAFwEAAwEAAAAAAAAAAAAAAAAAAgQFA//EABwRAAICAwEBAAAAAAAAAAAAAAECABEDBEEhEv/aAAwDAQACEQMRAD8AUE8Jk22vgnq2EE7kkq6+uPtz980H/TXdvH2iNNx7LAH2v+5QtVUn7Ve7yCqjdjGh4BzpyeO1tm9yzFs7CzL6aFf4g5Mw7qsvnJR2tovnY32ef9z41c1l5q9xVWYAEqp+XOGU/b6aNbrCXl34HJY8nDGBsEi6hKxIuo46y4v7atBTEctmT5I7cAD84seYeR7vSRL1jhrdmJLIQ3b8ZN9Z5Q8UY7KwnUcCQHM1zfJcZTZiEir9CT7xLDonE9lbE0TXxglm9Jjnq/I49jTSxd4+OfTcYZPbdwTS9qsfwY+P6A/XDKS4VIuqjHyByf/Z',
+          },
         },
       },
     },
