@@ -30,6 +30,8 @@ export default function Book({
               alt={cover.altText}
               width="320"
               height="500"
+              placeholder="blur"
+              blurDataURL={cover.metadata.lqip}
               layout="responsive"
             />
           </div>
@@ -90,6 +92,9 @@ export async function getStaticProps({ params }) {
             asset {
               url
               altText
+              metadata {
+                lqip
+              }
             }
           }
           readStatus
@@ -126,6 +131,9 @@ export async function getStaticProps({ params }) {
             asset {
               url
               altText
+              metadata {
+                lqip
+              }
             }
           }
         }
