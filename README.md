@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/20a1902f-8a3c-4dc6-87ae-973ff95c1111/deploy-status)](https://app.netlify.com/sites/glittery-caramel-209e33/deploys)
+
 # Bookshelf
 
 ## Getting Started locally
