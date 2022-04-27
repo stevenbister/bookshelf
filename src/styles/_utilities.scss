@@ -77,3 +77,12 @@ $position: 'relative', 'absolute', 'sticky', 'fixed';
   clip-path: inset(100%);
   white-space: nowrap;
 }
+
+/* ---------------------------------------
+  Dark mode
+--------------------------------------- */
+.dark {
+  --color-dark: hsl(0, 0%, 94%);
+  --color-light: hsl(0, 0%, 13%);
+  --color-grey: hsl(0, 0%, 4%);
+}
