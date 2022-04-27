@@ -1,0 +1,21 @@
+.theme-switcher {
+  --size: 2.75rem;
+  background: none;
+  border: none;
+  color: currentColor;
+  width: var(--size);
+  height: var(--size);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+
+  &:hover {
+    filter: brightness(200%);
+  }
+}
+
+.theme-switcher svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}

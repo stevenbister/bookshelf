@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const Header = () => {
   const router = useRouter();
@@ -17,6 +18,8 @@ const Header = () => {
           <a className="fs-3">Bookshelf</a>
         </Link>
       )}
+
+      <ThemeSwitcher />
     </header>
   );
 };
