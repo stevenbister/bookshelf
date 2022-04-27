@@ -10,6 +10,8 @@ const CardImage = ({ image }) => (
         width="160"
         height="250"
         layout="responsive"
+        placeholder="blur"
+        blurDataURL={image.asset.metadata.lqip}
       />
     ) : (
       <Image

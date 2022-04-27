@@ -39,6 +39,9 @@ export async function getStaticProps() {
             asset {
               url
               altText
+              metadata {
+                lqip
+              }
             }
           }
         }
@@ -70,6 +73,9 @@ export async function getStaticProps() {
                 asset {
                   url
                   altText
+                  metadata {
+                    lqip
+                  }
                 }
               }
             }
