@@ -24,13 +24,15 @@ export default function Book({
 
       <Sidebar>
         {cover ? (
-          <Image
-            src={cover.url}
-            alt={cover.altText}
-            width="320"
-            height="500"
-            layout="responsive"
-          />
+          <div className="shadow">
+            <Image
+              src={cover.url}
+              alt={cover.altText}
+              width="320"
+              height="500"
+              layout="responsive"
+            />
+          </div>
         ) : null}
 
         <div className="stack">
