@@ -1,5 +1,8 @@
 .header {
   padding-block: var(--space-m-l);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header a {

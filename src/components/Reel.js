@@ -41,6 +41,7 @@ const Reel = ({ array }) => {
           slug={slug}
           cover={cover}
           readStatus={readStatus}
+          headingLevel="h3"
         />
       ))}
     </ul>

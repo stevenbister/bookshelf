@@ -3,13 +3,27 @@
   --gap: var(--space-l-xl);
 
   display: grid;
-  grid-gap: var(--gap);
+  column-gap: var(--gap);
   /* min() with 100% prevents overflow
   in extra narrow spaces */
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
   grid-auto-flow: dense;
 }
 
+.grid > * {
+  margin-block-end: var(
+    --gap
+  ); // Because we are animating the height we can't use `gap` on the row level
+}
+
 .grid__item--full-width {
   grid-column: 1 / -1;
+  max-height: 500px;
+  transition: max-height 0.2s ease-in, margin 0.2s ease-in;
+}
+
+.grid__item--hidden {
+  max-height: 0;
+  overflow: hidden;
+  margin-block-end: 0;
 }

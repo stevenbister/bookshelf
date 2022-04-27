@@ -1,5 +1,6 @@
 import getSanityContent from '@lib/sanity';
 import Image from 'next/image';
+import Head from 'next/head';
 import { PortableText } from '@portabletext/react';
 import Reel from '@/components/Reel';
 import Sidebar from '@/components/Sidebar';
@@ -16,15 +17,22 @@ export default function Book({
 }) {
   return (
     <>
+      <Head>
+        <title>{title} - Bookshelf</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Sidebar>
         {cover ? (
-          <Image
-            src={cover.url}
-            alt={cover.altText}
-            width="320"
-            height="500"
-            layout="responsive"
-          />
+          <div className="shadow">
+            <Image
+              src={cover.url}
+              alt={cover.altText}
+              width="320"
+              height="500"
+              layout="responsive"
+            />
+          </div>
         ) : null}
 
         <div className="stack">
@@ -56,7 +64,7 @@ export default function Book({
 
       {related ? (
         <div style={{ marginTop: 'var(--space-xl-2xl)' }}>
-          <h2>More books in this series...</h2>
+          <h2>More books in this collection</h2>
           <Reel array={related} />
         </div>
       ) : null}
@@ -113,6 +121,7 @@ export async function getStaticProps({ params }) {
           slug {
             current
           }
+          readStatus
           cover {
             asset {
               url

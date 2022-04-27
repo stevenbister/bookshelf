@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import ReadStatus from '../ReadStatus';
 import CardImage from './CardImage';
+import CardHeader from './CardHeader';
 
-const Card = ({ title, slug, cover, readStatus }) => (
+const Card = ({ title, slug, cover, readStatus, headingLevel }) => (
   <li>
     <Link href={`/${slug.current}`}>
       <a className="color-dark">
@@ -10,7 +11,7 @@ const Card = ({ title, slug, cover, readStatus }) => (
           <CardImage image={cover} />
           {readStatus ? <ReadStatus status={readStatus} /> : null}
 
-          <h3 className="sr-only card__heading fs-1">{title}</h3>
+          <CardHeader heading={title} as={headingLevel} />
         </div>
       </a>
     </Link>
