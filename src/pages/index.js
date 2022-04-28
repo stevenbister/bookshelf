@@ -2,12 +2,31 @@ import Grid from '@/components/Grid';
 import Head from 'next/head';
 import getSanityContent from 'src/lib/sanity';
 
-export default function Home({ books, total }) {
+export default function Home({ books, total, settings }) {
   return (
     <>
       <Head>
-        <title>Bookshelf</title>
+        <title>{settings.title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content={settings.description} />
+
+        <meta property="og:title" content={settings.title} />
+        <meta property="og:image" content={settings.socialImage.asset.url} />
+        <meta property="og:site_name" content="Bookshelf" />
+        <meta property="og:description" content={settings.description} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:description" content={settings.description} />
+        <meta name="twitter:title" content={settings.title} />
+        <meta name="twitter:site" content="@stevebister" />
+        <meta
+          name="twitter:domain"
+          content="https://bookshelf.stevenbister.com/"
+        />
+        <meta
+          name="twitter:image:src"
+          content={settings.socialImage.asset.url}
+        />
       </Head>
 
       <p>{total} books on the shelf</p>
@@ -47,6 +66,26 @@ export async function getStaticProps() {
         }
       }
     `,
+  });
+
+  const settings = await getSanityContent({
+    query: `
+      query SiteSettings($id: ID!) {
+        SiteSettings(id: $id) {
+          title,
+          description,
+          socialImage {
+            asset {
+              url
+              altText
+            }
+          }
+        }
+      }
+    `,
+    variables: {
+      id: 'siteSettings',
+    },
   });
 
   /**
@@ -129,6 +168,6 @@ export async function getStaticProps() {
   const total = data.allBook.length;
 
   return {
-    props: { books, total },
+    props: { books, total, settings: settings.SiteSettings },
   };
 }
