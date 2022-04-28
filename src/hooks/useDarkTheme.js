@@ -1,4 +1,4 @@
-const { useState, useEffect } = require('react');
+import { useState, useEffect } from 'react';
 import useLocalStorageState from 'use-local-storage-state';
 
 const useDarkTheme = () => {
@@ -11,8 +11,12 @@ const useDarkTheme = () => {
   const DARK_MODE = 'dark';
 
   useEffect(() => {
-    const matchMediaLight = window.matchMedia('(prefers-color-scheme: light)');
-    const matchMediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const matchMediaLight = window.matchMedia(
+      `(prefers-color-scheme: ${LIGHT_MODE})`,
+    );
+    const matchMediaDark = window.matchMedia(
+      `(prefers-color-scheme: ${DARK_MODE})`,
+    );
 
     // Set initial theme based on device preference
     if (!preferredTheme && matchMediaLight.matches) {
