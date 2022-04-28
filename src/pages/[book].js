@@ -20,6 +20,22 @@ export default function Book({
       <Head>
         <title>{title} - Bookshelf</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content={blurb[0].children[0].text} />
+
+        <meta property="og:title" content={title} />
+        <meta property="og:image" content={cover.url} />
+        <meta property="og:site_name" content="Bookshelf" />
+        <meta property="og:description" content={blurb[0].children[0].text} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:description" content={blurb[0].children[0].text} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:site" content="@stevebister" />
+        <meta
+          name="twitter:domain"
+          content="https://bookshelf.stevenbister.com/"
+        />
+        <meta name="twitter:image:src" content={cover.url} />
       </Head>
 
       <Sidebar>
