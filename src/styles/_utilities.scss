@@ -41,6 +41,13 @@ $colors: 'dark', 'light', 'primary', 'secondary';
   }
 }
 
+$display: 'block', 'inline', 'inline-block', 'flex', 'inline-flex' 'grid';
+@each $d in $display {
+  .d-#{$d} {
+    display: #{$d};
+  }
+}
+
 /* ---------------------------------------
   Position
 --------------------------------------- */

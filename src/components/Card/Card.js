@@ -6,7 +6,7 @@ import CardHeader from './CardHeader';
 const Card = ({ title, slug, cover, readStatus, headingLevel }) => (
   <li>
     <Link href={`/${slug.current}`}>
-      <a className="color-dark">
+      <a className="color-dark d-block">
         <div className="card shadow">
           <CardImage image={cover} />
           {readStatus ? <ReadStatus status={readStatus} /> : null}
