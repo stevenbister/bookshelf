@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import getSanityContent from 'src/lib/sanity';
-import Grid from '@/components/Grid';
-import Filter from '@/components/Filter';
+import Bookshelf from '@/components/Bookshelf';
 
 export default function Home({ books, total, settings }) {
   return (
@@ -32,9 +31,7 @@ export default function Home({ books, total, settings }) {
 
       <p>{total} books on the shelf</p>
 
-      <Filter books={books} />
-
-      <Grid array={books} />
+      <Bookshelf books={books} />
     </>
   );
 }
