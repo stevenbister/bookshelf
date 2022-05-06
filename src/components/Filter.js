@@ -1,7 +1,7 @@
 import Select from './Form/Select';
 import Radio from './Form/Radio';
 
-const Filter = ({ books }) => {
+const Filter = ({ books, filteredValues, handleChange }) => {
   const authors = books.map((book) => book.author);
   const uniqAuthors = [...new Set(authors)];
   const readStatuses = ['Read', 'Reading', 'Not read'];
@@ -11,15 +11,25 @@ const Filter = ({ books }) => {
       <fieldset>
         <legend>Sort</legend>
 
-        <Radio label="A - Z Author" groupName="sort" checked={true} />
-        <Radio label="A - Z Series" groupName="sort" />
+        <Radio
+          label="A - Z Author"
+          groupName="sort"
+          checked={filteredValues.sort}
+          onChange={handleChange}
+        />
+        <Radio
+          label="A - Z Series"
+          groupName="sort"
+          checked={filteredValues.sort}
+          onChange={handleChange}
+        />
       </fieldset>
 
       <fieldset>
         <legend>Filter</legend>
 
-        <Select label="Author" options={uniqAuthors} />
-        <Select label="Status" options={readStatuses} />
+        <Select label="Author" options={uniqAuthors} onChange={handleChange} />
+        <Select label="Status" options={readStatuses} onChange={handleChange} />
       </fieldset>
     </form>
   );
