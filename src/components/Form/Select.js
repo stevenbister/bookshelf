@@ -1,13 +1,13 @@
 import { kebabCase } from 'lodash';
 
-const Select = ({ label, options, includeAll = true }) => {
+const Select = ({ label, options, includeAll = true, onChange }) => {
   const id = kebabCase(label);
 
   return (
     <>
       <label htmlFor={id}>{label}</label>
 
-      <select name={id} id={id}>
+      <select name={id} id={id} onChange={onChange}>
         {includeAll ? <option value="all">All</option> : null}
 
         {options.map((option) => {
