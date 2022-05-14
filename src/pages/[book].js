@@ -5,6 +5,7 @@ import { PortableText } from '@portabletext/react';
 import Reel from '@/components/Reel';
 import Sidebar from '@/components/Sidebar';
 import ReadStatus from '@/components/ReadStatus';
+import { querySingleBook, queryBooksBySeries } from '@lib/queryBooks';
 
 export default function Book({
   title,
@@ -92,37 +93,7 @@ export default function Book({
 
 export async function getStaticProps({ params }) {
   // Get current page book
-  const BookBySlug = await getSanityContent({
-    query: `
-      query BookBySlug($slug: String!) {
-        allBook(where: { slug: { current: { eq: $slug } } }) {
-          title
-          author {
-            name
-          }
-          series {
-            name
-          }
-          blurbRaw
-          cover {
-            asset {
-              url
-              altText
-              metadata {
-                lqip
-              }
-            }
-          }
-          readStatus
-        }
-      }
-    `,
-    variables: {
-      slug: params.book,
-    },
-  });
-
-  const [book] = BookBySlug.allBook;
+  const book = await querySingleBook(params.book);
 
   const { title, blurbRaw: blurb, readStatus } = book;
   const author = book.author ? book.author.name : null;
@@ -130,35 +101,7 @@ export async function getStaticProps({ params }) {
   const cover = book.cover ? book.cover.asset : null;
 
   // Get related books
-  const BooksBySeries = await getSanityContent({
-    query: `
-      query BooksBySeries($series: String!) {
-        allBook(
-          where: { series: { name: { eq: $series } } },
-          sort: { bookNumber: ASC }
-        ) {
-          _id
-          title
-          slug {
-            current
-          }
-          readStatus
-          cover {
-            asset {
-              url
-              altText
-              metadata {
-                lqip
-              }
-            }
-          }
-        }
-      }
-    `,
-    variables: {
-      series,
-    },
-  });
+  const BooksBySeries = await queryBooksBySeries(series);
 
   const related = BooksBySeries ? BooksBySeries.allBook : null;
 
