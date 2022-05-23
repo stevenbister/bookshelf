@@ -1,11 +1,11 @@
-import getSanityContent from '@lib/sanity';
+import getSanityContent from '@/lib/sanity';
 import Image from 'next/image';
 import Head from 'next/head';
 import { PortableText } from '@portabletext/react';
 import Reel from '@/components/Reel';
 import Sidebar from '@/components/Sidebar';
 import ReadStatus from '@/components/ReadStatus';
-import { querySingleBook, queryBooksBySeries } from '@lib/queryBooks';
+import { querySingleBook, queryBooksBySeries } from '@/lib/queryBooks';
 
 export default function Book({
   title,

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import getSanityContent from 'src/lib/sanity';
 import Bookshelf from '@/components/Bookshelf';
-import { queryAllBooks, buildBooksArray } from '@lib/queryBooks';
+import { queryAllBooks, buildBooksArray } from '@/lib/queryBooks';
 
 export default function Home({ books, total, settings }) {
   return (
