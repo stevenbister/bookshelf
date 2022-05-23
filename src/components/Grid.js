@@ -13,7 +13,7 @@ const Grid = ({ array }) => {
         ({ _id, title, slug, cover, series, readStatus, relatedBooks }) => {
           return (
             <>
-              {relatedBooks ? (
+              {series ? (
                 <>
                   <ExpandableCard
                     key={kebabCase(series) + '-' + _id}
