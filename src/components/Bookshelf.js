@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { sortBooks } from '@/lib/queryBooks';
 import Filter from './Filter';
 import Grid from './Grid';
 
@@ -12,8 +13,9 @@ import Grid from './Grid';
 
 const Bookshelf = ({ books }) => {
   const [filteredValues, setFilteredValues] = useState({
-    sort: 'a-z-author',
     author: 'all',
+    books,
+    sort: 'a-z-author',
     status: 'all',
   });
 
@@ -23,6 +25,12 @@ const Bookshelf = ({ books }) => {
     setFilteredValues({ ...filteredValues, [name]: value });
   };
 
+  useEffect(() => {
+    const sortedBooks = sortBooks(books, filteredValues.sort.slice(4));
+
+    setFilteredValues({ ...filteredValues, books: sortedBooks });
+  }, [books, filteredValues]);
+
   return (
     <>
       <Filter
@@ -31,7 +39,7 @@ const Bookshelf = ({ books }) => {
         handleChange={handleChange}
       />
 
-      <Grid array={books} />
+      <Grid array={filteredValues.books} />
     </>
   );
 };
