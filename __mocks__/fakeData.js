@@ -103,7 +103,7 @@ const fakeData = {
       slug: {
         current: 'salems-lot',
       },
-      series: null,
+      series: '',
       bookNumber: null,
       blurbRaw: [
         {
