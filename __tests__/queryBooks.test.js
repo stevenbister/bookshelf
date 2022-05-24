@@ -79,7 +79,7 @@ it('sorts our array data', () => {
   const firstItem = sortedBooks[0];
   const lastItem = sortedBooks[sortedBooks.length - 1];
 
-  expect(firstItem).toHaveProperty('series', 'Broken Earth');
+  expect(firstItem).toHaveProperty('series', 'Mistborn');
   expect(firstItem).toHaveProperty('bookNumber', 1);
 
   expect(lastItem).toHaveProperty('series', '');
