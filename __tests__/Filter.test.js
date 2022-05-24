@@ -3,8 +3,6 @@ import userEvent from '@testing-library/user-event';
 import fakeData_formatted from '../__mocks__/fakeData_formatted';
 import Bookshelf from '@/components/Bookshelf';
 
-const setup = () => {};
-
 test('Renders the filter', () => {
   render(<Bookshelf books={fakeData_formatted} />);
 
