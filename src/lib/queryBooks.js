@@ -33,7 +33,7 @@ const querySingleBook = async (slug) => {
       },
     });
 
-    const [book] = BookBySlug.allBook;
+    const [book] = BookBySlug ? BookBySlug.allBook : [];
 
     return book;
   } catch (error) {
