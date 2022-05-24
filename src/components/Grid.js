@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { kebabCase } from 'lodash';
 import Card from './Card/Card';
 import ExpandableCard from './Card/ExpandableCard';
@@ -12,7 +12,7 @@ const Grid = ({ array }) => {
       {array.map(
         ({ _id, title, slug, cover, series, readStatus, relatedBooks }) => {
           return (
-            <>
+            <React.Fragment key={_id}>
               {series ? (
                 <>
                   <ExpandableCard
@@ -46,7 +46,7 @@ const Grid = ({ array }) => {
                   headingLevel="h2"
                 />
               )}
-            </>
+            </React.Fragment>
           );
         },
       )}
