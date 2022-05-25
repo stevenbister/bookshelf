@@ -59,7 +59,6 @@ const Bookshelf = ({ books, total }) => {
 
   return (
     <>
-      {console.log(books.length)}
       <details>
         <summary className="fs-2">Filter</summary>
 
