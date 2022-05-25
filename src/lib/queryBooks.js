@@ -56,6 +56,9 @@ const queryAllBooks = async () => {
             title
             author {
               name
+              slug {
+                current
+              }
             }
             slug {
               current
@@ -154,6 +157,7 @@ const buildBooksArray = async (allBooks) => {
           _id: book._id,
           title: book.title,
           author: book.author.name,
+          authorSlug: book.author.slug.current, //TODO: Move this into the author property
           slug: book.slug,
           series,
           bookNumber: book.bookNumber,
