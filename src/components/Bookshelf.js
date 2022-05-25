@@ -1,15 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { sortBooks } from '@/lib/queryBooks';
 import Filter from './Filter';
 import Grid from './Grid';
-
-/*
-  TODO: add a call to the graphql endpoint with updated filters on the query
-    - use the filteredValues state to handle the query somehow - they might need tweaking but should be okay
-    - will likey need to refactor the filter/map on the index page so we can reuse it and build the array again
-
-  TODO: pass the new array into the Grid component using the books prop as a default
-*/
 
 const Bookshelf = ({ books }) => {
   const [filteredBooks, setFilteredBooks] = useState(books);
@@ -19,16 +11,51 @@ const Bookshelf = ({ books }) => {
     status: 'all',
   });
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const { name, value } = e.target;
-
     // Update our controlled form inputs
     setFilteredValues({ ...filteredValues, [name]: value });
-
-    // Update the books array
-    const sortedBooks = sortBooks(books, value.slice(4));
-    setFilteredBooks(sortedBooks);
   };
+
+  useEffect(() => {
+    const booksClone = [...books]; // Create copy of books so we aren't mutating the original value in our event handler
+
+    // Filter the array
+    const filterBooksArray = booksClone.filter((book) => {
+      // Filter results when both author and status are selected
+      if (filteredValues.author !== 'all' && filteredValues.status !== 'all') {
+        return (
+          filteredValues.author === book.authorSlug &&
+          filteredValues.status === book.readStatus[0].toLowerCase()
+        );
+      }
+
+      // Filter results when only author is selected
+      if (filteredValues.author !== 'all') {
+        return filteredValues.author === book.authorSlug;
+      }
+
+      // Filter results when only status is selected
+      if (filteredValues.status !== 'all') {
+        return filteredValues.status === book.readStatus[0].toLowerCase();
+      }
+    });
+
+    // Sort based on the original cloned array if fitlers are both set to all
+    // otherwise sort based on the filteredArray
+    if (filteredValues.author === 'all' && filteredValues.status === 'all') {
+      setFilteredBooks(sortBooks(booksClone, filteredValues.sort.slice(4)));
+    } else {
+      setFilteredBooks(
+        sortBooks(filterBooksArray, filteredValues.sort.slice(4)),
+      );
+    }
+  }, [
+    books,
+    filteredValues.sort,
+    filteredValues.author,
+    filteredValues.status,
+  ]);
 
   return (
     <>
