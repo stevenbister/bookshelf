@@ -30,9 +30,7 @@ export default function Home({ books, total, settings }) {
         />
       </Head>
 
-      <p>{total} books on the shelf</p>
-
-      <Bookshelf books={books} />
+      <Bookshelf books={books} total={total} />
     </>
   );
 }

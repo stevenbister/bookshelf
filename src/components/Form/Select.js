@@ -4,8 +4,10 @@ const Select = ({ label, options, includeAll = true, onChange }) => {
   const id = kebabCase(label);
 
   return (
-    <>
-      <label htmlFor={id}>{label}</label>
+    <div className="select-wrapper">
+      <label className="fs-0" htmlFor={id}>
+        {label}
+      </label>
 
       <select name={id} id={id} onChange={onChange}>
         {includeAll ? <option value="all">All</option> : null}
@@ -20,7 +22,7 @@ const Select = ({ label, options, includeAll = true, onChange }) => {
           );
         })}
       </select>
-    </>
+    </div>
   );
 };
 export default Select;

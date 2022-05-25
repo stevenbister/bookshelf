@@ -3,7 +3,7 @@ import { sortBooks } from '@/lib/queryBooks';
 import Filter from './Filter';
 import Grid from './Grid';
 
-const Bookshelf = ({ books }) => {
+const Bookshelf = ({ books, total }) => {
   const [filteredBooks, setFilteredBooks] = useState(books);
   const [filteredValues, setFilteredValues] = useState({
     author: 'all',
@@ -59,11 +59,18 @@ const Bookshelf = ({ books }) => {
 
   return (
     <>
-      <Filter
-        books={books}
-        filteredValues={filteredValues}
-        handleChange={handleChange}
-      />
+      {console.log(books.length)}
+      <details>
+        <summary className="fs-2">Filter</summary>
+
+        <p className="fs-1">{total} in total books on the shelf</p>
+
+        <Filter
+          books={books}
+          filteredValues={filteredValues}
+          handleChange={handleChange}
+        />
+      </details>
 
       <Grid array={filteredBooks} />
     </>
