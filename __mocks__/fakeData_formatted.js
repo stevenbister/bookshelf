@@ -1,7 +1,7 @@
 const fakeData_formatted = [
   {
     _id: '2f07baf9-756d-40c6-9722-9d1a74ec8749',
-    title: 'This is Going to Hurt: Secret Diaries of a Junior Doctor ',
+    title: 'This is Going to Hurt: Secret Diaries of a Junior Doctor',
     author: 'Adam Kay',
     authorSlug: 'adam-kay',
     slug: {
@@ -31,7 +31,7 @@ const fakeData_formatted = [
     },
     series: 'The Witcher',
     bookNumber: 1,
-    readStatus: ['Read'],
+    readStatus: ['Reading'],
     cover: {
       asset: {
         url: 'https://cdn.sanity.io/images/vvmrkra8/production/b6474707bb6845cdc5e2f0901067b76c57d2e8f5-1043x1600.webp',
