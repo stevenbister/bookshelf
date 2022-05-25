@@ -5,6 +5,9 @@ const fakeData = {
       title: 'The Eye of the World',
       author: {
         name: 'Robert Jordan',
+        slug: {
+          current: 'robert-jordan',
+        },
       },
       slug: {
         current: 'the-eye-of-the-world',
@@ -45,6 +48,9 @@ const fakeData = {
       title: 'The Great Hunt',
       author: {
         name: 'Robert Jordan',
+        slug: {
+          current: 'robert-jordan',
+        },
       },
       slug: {
         current: 'the-great-hunt',
@@ -99,6 +105,9 @@ const fakeData = {
       title: "'Salems Lot",
       author: {
         name: 'Stephen King',
+        slug: {
+          current: 'stephen-king',
+        },
       },
       slug: {
         current: 'salems-lot',
