@@ -40,20 +40,107 @@ test('Renders the filter', () => {
   expect(statusSelect).toHaveLength(4);
 });
 
-test('it reorders the data based on the series name', async () => {
-  render(<Bookshelf books={fakeData_formatted} />);
+describe('sorting and filtering', () => {
+  const setup = () => {
+    render(<Bookshelf books={fakeData_formatted} />);
 
-  const seriesCheckbox = screen.getByLabelText('A - Z Series');
-
-  expect(screen.getAllByRole('listitem')[0]).toHaveTextContent(
-    /This is Going to Hurt: Secret Diaries of a Junior Doctor/i,
-  );
-
-  userEvent.click(seriesCheckbox);
-
-  await waitFor(() =>
+    // Should always start with this item
     expect(screen.getAllByRole('listitem')[0]).toHaveTextContent(
-      /The Final Empire/i,
-    ),
-  );
+      /This is Going to Hurt: Secret Diaries of a Junior Doctor/i,
+    );
+  };
+
+  test('it reorders the data based on the series name', async () => {
+    setup();
+
+    const seriesCheckbox = screen.getByLabelText('A - Z Series');
+
+    await waitFor(() => userEvent.click(seriesCheckbox));
+
+    await waitFor(() =>
+      expect(screen.getAllByRole('listitem')[0]).toHaveTextContent(
+        /The Final Empire/i,
+      ),
+    );
+  });
+
+  test('filters the data based on the author', async () => {
+    setup();
+
+    const authorSelect = screen.getByLabelText('Author');
+
+    await waitFor(() =>
+      userEvent.selectOptions(authorSelect, 'brandon-sanderson'),
+    );
+
+    await waitFor(() =>
+      expect(screen.getAllByRole('listitem')[0]).toHaveTextContent(
+        /Arcanium Unbounded/i,
+      ),
+    );
+  });
+
+  test('filters the data based on the status', async () => {
+    setup();
+
+    const statusSelect = screen.getByLabelText('Status');
+
+    await waitFor(() => userEvent.selectOptions(statusSelect, 'reading'));
+
+    await waitFor(() => {
+      expect(screen.getAllByRole('listitem')[0]).toHaveTextContent(
+        /The Last Wish/i,
+      );
+    });
+  });
+
+  test('filters the data based on the author and status', async () => {
+    setup();
+
+    const authorSelect = screen.getByLabelText('Author');
+    const statusSelect = screen.getByLabelText('Status');
+
+    await waitFor(() =>
+      userEvent.selectOptions(authorSelect, 'andrzej-sapkowski'),
+    );
+    await waitFor(() => userEvent.selectOptions(statusSelect, 'reading'));
+
+    await waitFor(() => {
+      expect(screen.getAllByRole('listitem')[0]).toHaveTextContent(
+        /The Last Wish/i,
+      );
+    });
+  });
+
+  test('filters and sorts the data', async () => {
+    setup();
+
+    const authorSelect = screen.getByLabelText('Author');
+    const statusSelect = screen.getByLabelText('Status');
+    const seriesCheckbox = screen.getByLabelText('A - Z Series');
+
+    await waitFor(() =>
+      userEvent.selectOptions(authorSelect, 'brandon-sanderson'),
+    );
+    await waitFor(() => userEvent.selectOptions(statusSelect, 'read'));
+    await waitFor(() => userEvent.click(seriesCheckbox));
+
+    await waitFor(() => {
+      expect(screen.getAllByRole('listitem')[0]).toHaveTextContent(
+        /The Final Empire/i,
+      );
+    });
+  });
+
+  test('returns no results if there are no matches', async () => {
+    setup();
+
+    const statusSelect = screen.getByLabelText('Status');
+
+    await waitFor(() => userEvent.selectOptions(statusSelect, 'not-read'));
+
+    await waitFor(() => {
+      expect(screen.getByText('No results'));
+    });
+  });
 });
