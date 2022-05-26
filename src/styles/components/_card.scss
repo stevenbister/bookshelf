@@ -6,6 +6,9 @@
   position: relative;
   width: 100%;
   cursor: pointer;
+  @media (min-width: 38.125rem) {
+    max-width: 20.1875rem;
+  }
 
   &::before {
     content: '';

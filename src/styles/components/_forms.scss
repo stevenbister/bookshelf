@@ -1,0 +1,22 @@
+form {
+  padding-block: var(--space-xs);
+  // max-width: 35rem;
+  // display: grid;
+}
+
+fieldset {
+  --stack-space: var(--space-s);
+  border: none;
+  margin: 0;
+  padding: 0;
+  grid-row: 1;
+}
+
+.select-wrapper {
+  display: grid;
+  max-width: max-content;
+}
+
+.radio-wrapper {
+  max-width: 8.125rem;
+}
