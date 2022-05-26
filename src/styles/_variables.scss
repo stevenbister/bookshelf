@@ -4,7 +4,6 @@
   --color-dark-shade: hsl(0, 0%, 3%);
   --color-light: hsl(0, 0%, 94%);
   --color-grey: hsl(0, 0%, 77%);
-  --form-control-color: var(--color-dark);
 
   /*
     Typography
@@ -53,4 +52,9 @@
   @media (min-width: 38.125rem) {
     --card-width: 14.375rem;
   }
+
+  /* Forms */
+  --form-control-color: var(--color-dark);
+  --select-border: var(--color-dark);
+  --select-arrow: var(--select-border);
 }
