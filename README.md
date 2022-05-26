@@ -6,10 +6,10 @@
 
 This project uses [Sanity](https://www.sanity.io/docs/getting-started) as the CMS and serves the content using their [GraphQl API](https://www.sanity.io/docs/graphql).
 
-To access the api add the project ID to a `.env` file
+To access the api add the project ID to your `.env.local` and `.env.test.local` files
 
 ```bash
-SANITY_PROJECT_ID=<your project ID>
+NEXT_PUBLIC_SANITY_PROJECT_ID=<your project ID>
 ```
 
 Don't forget to update this ID within the sanity.json file either
