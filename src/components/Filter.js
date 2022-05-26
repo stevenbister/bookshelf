@@ -7,44 +7,48 @@ const Filter = ({ books, filteredValues, handleChange }) => {
   const readStatuses = ['Read', 'Reading', 'Not read'];
 
   return (
-    <form className="switcher">
-      <fieldset>
-        <legend className="fs-1">Sort</legend>
+    <details>
+      <summary className="fs-1">Filter and sort</summary>
 
-        <div className="">
-          <Radio
-            label="A - Z Author"
-            groupName="sort"
-            checked={filteredValues.sort}
-            onChange={handleChange}
-          />
-          <Radio
-            label="A - Z Series"
-            groupName="sort"
-            checked={filteredValues.sort}
-            onChange={handleChange}
-          />
-        </div>
-      </fieldset>
+      <form className="switcher">
+        <fieldset>
+          <legend className="fs-1">Sort</legend>
 
-      <fieldset>
-        <legend className="fs-1">Filter</legend>
+          <div className="">
+            <Radio
+              label="A - Z Author"
+              groupName="sort"
+              checked={filteredValues.sort}
+              onChange={handleChange}
+            />
+            <Radio
+              label="A - Z Series"
+              groupName="sort"
+              checked={filteredValues.sort}
+              onChange={handleChange}
+            />
+          </div>
+        </fieldset>
 
-        <div className="switcher">
-          <Select
-            label="Author"
-            options={uniqAuthors}
-            onChange={handleChange}
-          />
+        <fieldset>
+          <legend className="fs-1">Filter</legend>
 
-          <Select
-            label="Status"
-            options={readStatuses}
-            onChange={handleChange}
-          />
-        </div>
-      </fieldset>
-    </form>
+          <div className="switcher">
+            <Select
+              label="Author"
+              options={uniqAuthors}
+              onChange={handleChange}
+            />
+
+            <Select
+              label="Status"
+              options={readStatuses}
+              onChange={handleChange}
+            />
+          </div>
+        </fieldset>
+      </form>
+    </details>
   );
 };
 export default Filter;
