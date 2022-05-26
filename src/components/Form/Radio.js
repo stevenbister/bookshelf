@@ -4,7 +4,7 @@ const Radio = ({ label, groupName, checked = false, onChange }) => {
   const id = kebabCase(label);
 
   return (
-    <div className="radio-wrapper">
+    <label className="radio-wrapper form-control fs-0" htmlFor={id}>
       <input
         type="radio"
         name={groupName}
@@ -13,8 +13,8 @@ const Radio = ({ label, groupName, checked = false, onChange }) => {
         checked={checked === id ? true : false}
         onChange={onChange}
       />
-      <label htmlFor={id}>{label}</label>
-    </div>
+      {label}
+    </label>
   );
 };
 

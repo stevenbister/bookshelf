@@ -20,3 +20,47 @@ fieldset {
 .radio-wrapper {
   max-width: 8.125rem;
 }
+
+/* Custom form styles */
+.form-control {
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+  align-items: center;
+}
+
+input[type='radio'] {
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: transparent;
+  /* Not removed via appearance */
+  margin: 0;
+  /* Custom input styles */
+  font: inherit;
+  color: currentColor;
+  width: 1.1em;
+  height: 1.1em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+}
+
+input[type='radio']::before {
+  content: '';
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+input[type='radio']:checked::before {
+  transform: scale(1);
+}
+
+input[type='radio']:focus-visible {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}

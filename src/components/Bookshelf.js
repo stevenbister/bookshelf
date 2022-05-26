@@ -59,17 +59,13 @@ const Bookshelf = ({ books, total }) => {
 
   return (
     <>
-      <details>
-        <summary className="fs-2">Filter</summary>
+      <p className="fs-1">{total} in total books on the shelf</p>
 
-        <p className="fs-1">{total} in total books on the shelf</p>
-
-        <Filter
-          books={books}
-          filteredValues={filteredValues}
-          handleChange={handleChange}
-        />
-      </details>
+      <Filter
+        books={books}
+        filteredValues={filteredValues}
+        handleChange={handleChange}
+      />
 
       <Grid array={filteredBooks} />
     </>
