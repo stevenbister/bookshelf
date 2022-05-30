@@ -52,4 +52,9 @@
   @media (min-width: 38.125rem) {
     --card-width: 14.375rem;
   }
+
+  /* Forms */
+  --form-control-color: var(--color-dark);
+  --select-border: var(--color-dark);
+  --select-arrow: var(--select-border);
 }

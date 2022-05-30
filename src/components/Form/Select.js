@@ -9,19 +9,22 @@ const Select = ({ label, options, includeAll = true, onChange }) => {
         {label}
       </label>
 
-      <select name={id} id={id} onChange={onChange}>
-        {includeAll ? <option value="all">All</option> : null}
+      <div className="select">
+        <select name={id} id={id} onChange={onChange}>
+          {includeAll ? <option value="all">All</option> : null}
 
-        {options.map((option) => {
-          const value = kebabCase(option);
+          {options.map((option) => {
+            const value = kebabCase(option);
 
-          return (
-            <option key={value} value={value}>
-              {option}
-            </option>
-          );
-        })}
-      </select>
+            return (
+              <option key={value} value={value}>
+                {option}
+              </option>
+            );
+          })}
+        </select>
+        <span className="focus"></span>
+      </div>
     </div>
   );
 };

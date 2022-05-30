@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { sortBooks } from '@/lib/queryBooks';
 import Filter from './Filter';
 import Grid from './Grid';
+import pluralise from '@/lib/pluralise';
 
-const Bookshelf = ({ books, total }) => {
+const Bookshelf = ({ books }) => {
   const [filteredBooks, setFilteredBooks] = useState(books);
+  const [totalBooks, setTotalBooks] = useState(filteredBooks.length);
   const [filteredValues, setFilteredValues] = useState({
     author: 'all',
     sort: 'a-z-author',
@@ -17,6 +19,7 @@ const Bookshelf = ({ books, total }) => {
     setFilteredValues({ ...filteredValues, [name]: value });
   };
 
+  // Update the filteredBooks state when filteredValues updates
   useEffect(() => {
     const booksClone = [...books]; // Create copy of books so we aren't mutating the original value in our event handler
 
@@ -57,22 +60,38 @@ const Bookshelf = ({ books, total }) => {
     filteredValues.status,
   ]);
 
+  // Set the count of the number of books on the page
+  useEffect(() => {
+    // Get each item that has a related books array
+    const hasRelatedBooks = filteredBooks.filter(
+      (book) => book.relatedBooks.length > 0,
+    );
+
+    // Sum up the totals of each list of related books
+    // We need to subtract 1 from each one so we don't count the first book twice
+    const counter = 0;
+    const countRelatedBooks = hasRelatedBooks.reduce(
+      (acc, book) => acc + book.relatedBooks.length - 1,
+      counter,
+    );
+
+    setTotalBooks(filteredBooks.length + countRelatedBooks);
+  }, [filteredBooks]);
+
   return (
-    <>
-      <details>
-        <summary className="fs-2">Filter</summary>
+    <div className="stack">
+      <Filter
+        books={books}
+        filteredValues={filteredValues}
+        handleChange={handleChange}
+      />
 
-        <p className="fs-1">{total} in total books on the shelf</p>
-
-        <Filter
-          books={books}
-          filteredValues={filteredValues}
-          handleChange={handleChange}
-        />
-      </details>
+      <p className="fs-1">
+        {totalBooks} {pluralise('book', totalBooks)}
+      </p>
 
       <Grid array={filteredBooks} />
-    </>
+    </div>
   );
 };
 export default Bookshelf;
