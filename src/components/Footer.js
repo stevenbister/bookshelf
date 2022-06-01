@@ -1,7 +1,9 @@
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer">
-      <p></p>
+      <a href="https://stevenbister.com/">&copy;{year} Steven Bister</a>
       <a href="https://github.com/stevenbister/bookshelf">GitHub</a>
     </footer>
   );
