@@ -16,6 +16,8 @@ export default function Book({
   readStatus,
   related,
 }) {
+  const authorNames = author.map(({ name }) => name).join(', ');
+
   return (
     <>
       <Head>
@@ -60,22 +62,26 @@ export default function Book({
             <p
               className="fs-3 fw-600 lh-1"
               style={{ '--stack-space': 'var(--space-s)' }}
+              data-testid="series"
             >
               {series}
             </p>
           ) : null}
-          {author ? (
-            <p
-              className="fs-2 fw-600 lh-1"
-              style={{ '--stack-space': 'var(--space-2xs)' }}
-            >
-              {author}
-            </p>
-          ) : null}
+          <p
+            className="fs-2 fw-600 lh-1"
+            style={{ '--stack-space': 'var(--space-2xs)' }}
+            data-testid="author"
+          >
+            {authorNames}
+          </p>
 
           {readStatus ? <ReadStatus status={readStatus} /> : null}
 
-          <div className="stack" style={{ marginTop: 'var(--space-l)' }}>
+          <div
+            className="stack"
+            style={{ marginTop: 'var(--space-l)' }}
+            data-testid="blurb"
+          >
             {blurb ? <PortableText value={blurb} /> : null}
           </div>
         </div>
@@ -96,7 +102,7 @@ export async function getStaticProps({ params }) {
   const book = await querySingleBook(params.book);
 
   const { title, blurbRaw: blurb, readStatus } = book;
-  const author = book.author ? book.author.name : null;
+  const author = Array.isArray(book.author) ? book.author : [book.author];
   const series = book.series ? book.series.name : null;
   const cover = book.cover ? book.cover.asset : null;
 
