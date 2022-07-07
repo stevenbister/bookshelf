@@ -2,8 +2,13 @@ import Select from './Form/Select';
 import Radio from './Form/Radio';
 
 const Filter = ({ books, filteredValues, handleChange }) => {
-  const authors = books.map((book) => book.author);
-  const uniqAuthors = [...new Set(authors)];
+  const authors = books.map((book) => {
+    // Pull out the name from the author object
+    const author = book.author.map((author) => author.name);
+
+    return author;
+  });
+  const uniqAuthors = [...new Set(authors.flat())];
   const readStatuses = ['Read', 'Reading', 'Not read'];
 
   return (

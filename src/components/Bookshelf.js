@@ -28,14 +28,17 @@ const Bookshelf = ({ books }) => {
       // Filter results when both author and status are selected
       if (filteredValues.author !== 'all' && filteredValues.status !== 'all') {
         return (
-          filteredValues.author === book.authorSlug &&
-          filteredValues.status === book.readStatus[0].toLowerCase()
+          book.author.some(
+            (author) => author.slug.current === filteredValues.author,
+          ) && filteredValues.status === book.readStatus[0].toLowerCase()
         );
       }
 
       // Filter results when only author is selected
       if (filteredValues.author !== 'all') {
-        return filteredValues.author === book.authorSlug;
+        return book.author.some(
+          (author) => author.slug.current === filteredValues.author,
+        );
       }
 
       // Filter results when only status is selected
