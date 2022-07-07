@@ -56,8 +56,14 @@ it('successfully formats our data and builds the array', async () => {
   expect(formattedData[0]).toMatchObject({
     _id: 'f4e7685b-1119-411f-855b-6f77e4816f6b',
     title: 'The Eye of the World',
-    author: 'Robert Jordan',
-    authorSlug: 'robert-jordan',
+    author: [
+      {
+        name: 'Robert Jordan',
+        slug: {
+          current: 'robert-jordan',
+        },
+      },
+    ],
     slug: { current: 'the-eye-of-the-world' },
     series: 'The Wheel of Time',
     bookNumber: 1,

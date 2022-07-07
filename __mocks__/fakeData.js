@@ -3,12 +3,14 @@ const fakeData = {
     {
       _id: 'f4e7685b-1119-411f-855b-6f77e4816f6b',
       title: 'The Eye of the World',
-      author: {
-        name: 'Robert Jordan',
-        slug: {
-          current: 'robert-jordan',
+      author: [
+        {
+          name: 'Robert Jordan',
+          slug: {
+            current: 'robert-jordan',
+          },
         },
-      },
+      ],
       slug: {
         current: 'the-eye-of-the-world',
       },
@@ -46,12 +48,14 @@ const fakeData = {
     {
       _id: 'eb00b46d-45ef-456c-91c6-14d367cbe611',
       title: 'The Great Hunt',
-      author: {
-        name: 'Robert Jordan',
-        slug: {
-          current: 'robert-jordan',
+      author: [
+        {
+          name: 'Robert Jordan',
+          slug: {
+            current: 'robert-jordan',
+          },
         },
-      },
+      ],
       slug: {
         current: 'the-great-hunt',
       },
@@ -103,12 +107,14 @@ const fakeData = {
     {
       _id: '5483de4a-44fb-4b1c-8f13-586b0aa0e91b',
       title: "'Salems Lot",
-      author: {
-        name: 'Stephen King',
-        slug: {
-          current: 'stephen-king',
+      author: [
+        {
+          name: 'Stephen King',
+          slug: {
+            current: 'stephen-king',
+          },
         },
-      },
+      ],
       slug: {
         current: 'salems-lot',
       },

@@ -2,8 +2,14 @@ const fakeData_formatted = [
   {
     _id: '2f07baf9-756d-40c6-9722-9d1a74ec8749',
     title: 'This is Going to Hurt: Secret Diaries of a Junior Doctor',
-    author: 'Adam Kay',
-    authorSlug: 'adam-kay',
+    author: [
+      {
+        name: 'Adam Kay',
+        slug: {
+          current: 'adam-kay',
+        },
+      },
+    ],
     slug: {
       current: 'this-is-going-to-hurt',
     },
@@ -24,8 +30,14 @@ const fakeData_formatted = [
   {
     _id: 'c27b860c-51cd-4f2f-83f2-52fc72bf5c73',
     title: 'The Last Wish',
-    author: 'Andrzej Sapkowski',
-    authorSlug: 'andrzej-sapkowski',
+    author: [
+      {
+        name: 'Andrzej Sapkowski',
+        slug: {
+          current: 'andrzej-sapkowski',
+        },
+      },
+    ],
     slug: {
       current: 'the-last-wish',
     },
@@ -149,8 +161,14 @@ const fakeData_formatted = [
   {
     _id: '1f1b975e-7926-43f3-b116-09235eecf05b',
     title: 'Arcanium Unbounded',
-    author: 'Brandon Sanderson',
-    authorSlug: 'brandon-sanderson',
+    author: [
+      {
+        name: 'Brandon Sanderson',
+        slug: {
+          current: 'brandon-sanderson',
+        },
+      },
+    ],
     slug: {
       current: 'arcanium-unbounded',
     },
@@ -171,8 +189,14 @@ const fakeData_formatted = [
   {
     _id: 'efb4d371-1c33-4feb-841b-9a7c3cf8eb48',
     title: 'Elantris',
-    author: 'Brandon Sanderson',
-    authorSlug: 'brandon-sanderson',
+    author: [
+      {
+        name: 'Brandon Sanderson',
+        slug: {
+          current: 'brandon-sanderson',
+        },
+      },
+    ],
     slug: {
       current: 'elantris',
     },
@@ -193,8 +217,14 @@ const fakeData_formatted = [
   {
     _id: '9f40fb32-3160-4c33-8611-2d18d02bd55f',
     title: 'The Final Empire',
-    author: 'Brandon Sanderson',
-    authorSlug: 'brandon-sanderson',
+    author: [
+      {
+        name: 'Brandon Sanderson',
+        slug: {
+          current: 'brandon-sanderson',
+        },
+      },
+    ],
     slug: {
       current: 'the-final-empire',
     },

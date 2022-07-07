@@ -2,9 +2,14 @@ const fakeData_single = {
   allBook: [
     {
       title: 'The Eye of the World',
-      author: {
-        name: 'Robert Jordan',
-      },
+      author: [
+        {
+          name: 'Robert Jordan',
+          slug: {
+            current: 'robert-jordan',
+          },
+        },
+      ],
       series: {
         name: 'The Wheel of Time',
       },
