@@ -173,9 +173,12 @@ const buildBooksArray = async (allBooks) => {
     // Otherwise move it down
     // Then sort by title
 
-    const compareAuthor = a.author[0].name
+    const authorA = a.author[0]?.name ? a.author[0].name : a.author;
+    const authorB = b.author[0]?.name ? b.author[0].name : b.author;
+
+    const compareAuthor = authorA
       .toLowerCase()
-      .localeCompare(b.author[0].name.toLowerCase());
+      .localeCompare(authorB.toLowerCase());
     const compareTitle = a.title
       .toLowerCase()
       .localeCompare(b.title.toLowerCase());

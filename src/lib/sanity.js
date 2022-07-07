@@ -1,6 +1,6 @@
 const getSanityContent = async ({ query, variables = {} }) => {
   const { data } = await fetch(
-    `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/production/default`,
+    `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/${process.env.NEXT_PUBLIC_SANITY_DATASET}/default`,
     {
       method: 'POST',
       headers: {

@@ -10,7 +10,7 @@ import fakeData_formatted from '../__mocks__/fakeData_formatted';
 import fakeData_single from '../__mocks__/fakeData_single';
 import fakeData_series from '../__mocks__/fakeData_series';
 
-const queryUrl = `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/production/default`;
+const queryUrl = `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/${process.env.NEXT_PUBLIC_SANITY_DATASET}/default`;
 
 beforeEach(() => {
   fetch.resetMocks();
