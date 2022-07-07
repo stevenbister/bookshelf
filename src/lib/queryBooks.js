@@ -152,11 +152,13 @@ const buildBooksArray = async (allBooks) => {
         // Get books by series and pass them into each response
         const querySeries = await queryBooksBySeries(series);
         const relatedBooks = querySeries ? querySeries.allBook : null;
+        // Ensuer author is always an array
+        const author = Array.isArray(book.author) ? book.author : [book.author];
 
         return {
           _id: book._id,
           title: book.title,
-          author: book.author,
+          author,
           slug: book.slug,
           series,
           bookNumber: book.bookNumber,
