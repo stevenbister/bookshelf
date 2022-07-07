@@ -152,12 +152,13 @@ const buildBooksArray = async (allBooks) => {
         // Get books by series and pass them into each response
         const querySeries = await queryBooksBySeries(series);
         const relatedBooks = querySeries ? querySeries.allBook : null;
+        // Ensuer author is always an array
+        const author = Array.isArray(book.author) ? book.author : [book.author];
 
         return {
           _id: book._id,
           title: book.title,
-          author: book.author.name,
-          authorSlug: book.author.slug.current, //TODO: Move this into the author property
+          author,
           slug: book.slug,
           series,
           bookNumber: book.bookNumber,
@@ -174,9 +175,12 @@ const buildBooksArray = async (allBooks) => {
     // Otherwise move it down
     // Then sort by title
 
-    const compareAuthor = a.author
+    const authorA = a.author[0]?.name ? a.author[0].name : a.author;
+    const authorB = b.author[0]?.name ? b.author[0].name : b.author;
+
+    const compareAuthor = authorA
       .toLowerCase()
-      .localeCompare(b.author.toLowerCase());
+      .localeCompare(authorB.toLowerCase());
     const compareTitle = a.title
       .toLowerCase()
       .localeCompare(b.title.toLowerCase());
@@ -197,9 +201,13 @@ const buildBooksArray = async (allBooks) => {
 const sortBooks = (books, sortBy) => {
   // Sort sortBy value alphabetically
   books.sort((a, b) => {
-    const compareSortByVal = a[sortBy]
+    // Check whether we're sorting against and object (namely the author) or just a string
+    const sortByA = a[sortBy][0]?.name ? a[sortBy][0].name : a[sortBy];
+    const sortByB = b[sortBy][0]?.name ? b[sortBy][0].name : b[sortBy];
+
+    const compareSortByVal = sortByA
       .toLowerCase()
-      .localeCompare(b[sortBy].toLowerCase());
+      .localeCompare(sortByB.toLowerCase());
     const compareTitle = a.title
       .toLowerCase()
       .localeCompare(b.title.toLowerCase());

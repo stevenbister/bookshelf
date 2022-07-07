@@ -10,7 +10,7 @@ import fakeData_formatted from '../__mocks__/fakeData_formatted';
 import fakeData_single from '../__mocks__/fakeData_single';
 import fakeData_series from '../__mocks__/fakeData_series';
 
-const queryUrl = `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/production/default`;
+const queryUrl = `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/${process.env.NEXT_PUBLIC_SANITY_DATASET}/default`;
 
 beforeEach(() => {
   fetch.resetMocks();
@@ -56,8 +56,14 @@ it('successfully formats our data and builds the array', async () => {
   expect(formattedData[0]).toMatchObject({
     _id: 'f4e7685b-1119-411f-855b-6f77e4816f6b',
     title: 'The Eye of the World',
-    author: 'Robert Jordan',
-    authorSlug: 'robert-jordan',
+    author: [
+      {
+        name: 'Robert Jordan',
+        slug: {
+          current: 'robert-jordan',
+        },
+      },
+    ],
     slug: { current: 'the-eye-of-the-world' },
     series: 'The Wheel of Time',
     bookNumber: 1,

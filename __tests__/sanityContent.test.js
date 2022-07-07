@@ -1,7 +1,7 @@
 import getSanityContent from '../src/lib/sanity';
 import fakeData from '../__mocks__/fakeData';
 
-const queryUrl = `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/production/default`;
+const queryUrl = `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/${process.env.NEXT_PUBLIC_SANITY_DATASET}/default`;
 
 beforeEach(() => {
   fetch.resetMocks();

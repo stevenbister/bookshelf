@@ -40,8 +40,14 @@ export default {
     {
       name: 'author',
       title: 'Author',
-      type: 'reference',
-      to: [{ type: 'author' }],
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          title: 'Author',
+          to: [{ type: 'author' }],
+        },
+      ],
     },
     {
       name: 'readStatus',
