@@ -20,11 +20,21 @@ const ExpandableCard = ({
       .join(',')
       .split(',');
 
-    if (statuses.some((s) => /reading/i.test(s))) return 'reading';
+    const isReading = statuses.includes('reading');
+    const isRead = statuses.includes('read');
+    const isNotRead = statuses.includes('not read');
 
-    if (statuses.some((s) => /read/i.test(s))) return 'read';
+    if ((isNotRead && isRead) || (isReading && isRead) || isReading) {
+      return 'reading';
+    }
 
-    if (statuses.some((s) => /not read/i.test(s))) return 'not read';
+    if (isNotRead) {
+      return 'not read';
+    }
+
+    if (isRead) {
+      return 'read';
+    }
   };
 
   return (
