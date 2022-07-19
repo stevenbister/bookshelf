@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { sortBooks } from '@/lib/queryBooks';
+import { kebabCase } from 'lodash';
 import Filter from './Filter';
 import Grid from './Grid';
 import pluralise from '@/lib/pluralise';
@@ -43,7 +44,11 @@ const Bookshelf = ({ books }) => {
 
       // Filter results when only status is selected
       if (filteredValues.status !== 'all') {
-        return filteredValues.status === book.readStatus[0].toLowerCase();
+        const readStatus = Array.isArray(book.readStatus)
+          ? book.readStatus[0]
+          : book.readStatus;
+
+        return filteredValues.status === kebabCase(readStatus);
       }
     });
 
