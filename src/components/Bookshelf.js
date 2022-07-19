@@ -28,10 +28,14 @@ const Bookshelf = ({ books }) => {
     const filterBooksArray = booksClone.filter((book) => {
       // Filter results when both author and status are selected
       if (filteredValues.author !== 'all' && filteredValues.status !== 'all') {
+        const readStatus = Array.isArray(book.readStatus)
+          ? book.readStatus[0]
+          : book.readStatus;
+
         return (
           book.author.some(
             (author) => author.slug.current === filteredValues.author,
-          ) && filteredValues.status === book.readStatus[0].toLowerCase()
+          ) && filteredValues.status === kebabCase(readStatus)
         );
       }
 
