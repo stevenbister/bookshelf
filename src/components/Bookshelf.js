@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { sortBooks } from '@/lib/queryBooks';
+import { kebabCase } from 'lodash';
 import Filter from './Filter';
 import Grid from './Grid';
 import pluralise from '@/lib/pluralise';
@@ -27,10 +28,14 @@ const Bookshelf = ({ books }) => {
     const filterBooksArray = booksClone.filter((book) => {
       // Filter results when both author and status are selected
       if (filteredValues.author !== 'all' && filteredValues.status !== 'all') {
+        const readStatus = Array.isArray(book.readStatus)
+          ? book.readStatus[0]
+          : book.readStatus;
+
         return (
           book.author.some(
             (author) => author.slug.current === filteredValues.author,
-          ) && filteredValues.status === book.readStatus[0].toLowerCase()
+          ) && filteredValues.status === kebabCase(readStatus)
         );
       }
 
@@ -43,7 +48,11 @@ const Bookshelf = ({ books }) => {
 
       // Filter results when only status is selected
       if (filteredValues.status !== 'all') {
-        return filteredValues.status === book.readStatus[0].toLowerCase();
+        const readStatus = Array.isArray(book.readStatus)
+          ? book.readStatus[0]
+          : book.readStatus;
+
+        return filteredValues.status === kebabCase(readStatus);
       }
     });
 
