@@ -8,34 +8,12 @@ const ExpandableCard = ({
   title,
   cover,
   relatedBooks,
+  readStatus,
   ariaControls,
   onClick,
 }) => {
   const { ref, isComponentClicked, setIsComponentClicked } =
     useOutsideClick(false);
-
-  const seriesReadStatus = () => {
-    const statuses = relatedBooks
-      .map((book) => book.readStatus)
-      .join(',')
-      .split(',');
-
-    const isReading = statuses.includes('reading');
-    const isRead = statuses.includes('read');
-    const isNotRead = statuses.includes('not read');
-
-    if ((isNotRead && isRead) || (isReading && isRead) || isReading) {
-      return 'reading';
-    }
-
-    if (isNotRead) {
-      return 'not read';
-    }
-
-    if (isRead) {
-      return 'read';
-    }
-  };
 
   return (
     <li className="relative">
@@ -54,7 +32,7 @@ const ExpandableCard = ({
         }}
       >
         <CardImage image={cover} />
-        {seriesReadStatus() ? <ReadStatus status={seriesReadStatus()} /> : null}
+        {readStatus ? <ReadStatus status={readStatus} /> : null}
 
         <CardHeader heading={title} as="h2" />
 
