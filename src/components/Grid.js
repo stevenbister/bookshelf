@@ -22,6 +22,7 @@ const Grid = ({ array }) => {
                       title={title}
                       cover={cover}
                       relatedBooks={relatedBooks}
+                      readStatus={readStatus}
                       ariaControls={kebabCase(series)}
                       onClick={() => {
                         series === openSeries
