@@ -66,12 +66,14 @@ async function scraper(browser, url) {
   // Get the link to all the required books
   let books = await page.$$eval('li[data-itemid]', (nodes) =>
     nodes.map((node) => {
-      const title = node.querySelector('[id*="itemName_"]').innerText;
+      const item = node.querySelector('[id*="itemName_"]');
       const author = node.querySelector('[id*="item-byline-"]').innerText;
       const cover = node.querySelector('[id*="itemImage_"] img').src;
 
       return {
-        title,
+        id: item.id,
+        title: item.innerText,
+        link: item.href,
         author,
         cover,
       };
