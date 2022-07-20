@@ -14,7 +14,7 @@ module.exports = {
   reactStrictMode: true,
   rewrites: () => [STUDIO_REWRITE],
   images: {
-    domains: ['cdn.sanity.io'],
+    domains: ['cdn.sanity.io', 'm.media-amazon.com'],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
