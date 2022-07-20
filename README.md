@@ -6,14 +6,15 @@
 
 This project uses [Sanity](https://www.sanity.io/docs/getting-started) as the CMS and serves the content using their [GraphQl API](https://www.sanity.io/docs/graphql).
 
-To access the api add the project ID & development dataset to your `.env.local` and `.env.test.local` files
+To access the api add the project ID & development dataset to your `.env.local` and `.env.test.local` files.
 
 ```.env
 NEXT_PUBLIC_SANITY_PROJECT_ID=<your project ID>
 NEXT_PUBLIC_SANITY_DATASET=development
+NEXT_PUBLIC_WISHLIST_URL=<your wishlist url>
 ```
 
-Don't forget to update this ID within the sanity.json file either
+Don't forget to update this ID within the sanity.json file!
 
 ## Next
 
@@ -26,6 +27,11 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+### API
+
+There is an api route at `/api/wishlist` which generates a json response of books scraped from the `NEXT_PUBLIC_WISHLIST_URL` variable.
+This url needs to be a public amazon wishlist for the scraper to work correctly, otherwise it will throw an error.
 
 ## Sanity
 
