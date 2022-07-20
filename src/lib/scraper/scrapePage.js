@@ -1,5 +1,8 @@
 import puppeteer from 'puppeteer';
 
+// TODO: Write tests
+// ? Could this be set up as a cron job somewhere? Perhaps runs once a week or month and triggers a rebuild of the site...
+
 /**
  * Initialise a headless puppeteer browser instance
  *
