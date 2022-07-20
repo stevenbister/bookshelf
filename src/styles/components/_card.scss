@@ -67,3 +67,37 @@
   transform: translate(1.5rem, 1.5rem);
   z-index: 1;
 }
+
+/* ---------------------------------------
+  Wide card
+--------------------------------------- */
+.wide-card {
+  display: flex;
+  gap: var(--space-m-l);
+  padding-block: var(--space-s);
+
+  @media (max-width: 424px) {
+    flex-wrap: wrap;
+  }
+}
+
+.wide-card > span {
+  flex-shrink: 0;
+  align-self: flex-start;
+  background-color: var(
+    --color-light
+  ) !important; // Force bg colour so mix-blend-mode will work
+
+  img {
+    mix-blend-mode: multiply; // This is a little trick for removing the white background from the jpg
+  }
+}
+
+.wide-card a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.wide-card h2 {
+  max-width: 36ch;
+}

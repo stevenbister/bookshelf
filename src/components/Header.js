@@ -19,7 +19,19 @@ const Header = () => {
         </Link>
       )}
 
-      <ThemeSwitcher />
+      <div>
+        <nav>
+          <Link href="/wishlist">
+            {router.asPath === '/wishlist' ? (
+              <a aria-current="page">Wishlist</a>
+            ) : (
+              <a>Wishlist</a>
+            )}
+          </Link>
+        </nav>
+
+        <ThemeSwitcher />
+      </div>
     </header>
   );
 };
