@@ -14,5 +14,5 @@ export const book = sqliteTable('book', {
 	authorId: integer('author_id').references(() => author.id),
 	seriesId: integer('series_id').references(() => series.id),
 	cover: integer('cover').references(() => cover.id),
-	status: integer('status').references(() => status.id)
+	statusId: integer('status_id').references(() => status.id)
 });
