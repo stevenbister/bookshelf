@@ -1,5 +1,25 @@
+DELETE FROM status;
+DELETE FROM series;
 DELETE FROM book;
 DELETE FROM author;
+
+INSERT INTO status (
+	status
+) VALUES (
+	'not read'
+), (
+	'reading'
+), (
+	'read'
+);
+
+INSERT INTO series (
+	id,
+	title
+) VALUES (
+	1,
+	"The Wheel of Time"
+);
 
 INSERT INTO author (
 	id,
@@ -17,11 +37,20 @@ INSERT INTO author (
 
 INSERT INTO book (
 	title,
-	author_id
+	book_number,
+	author_id,
+	series_id,
+	status
 ) VALUES (
 	"American Gods",
-	(SELECT id FROM author WHERE id = 1)
+	NULL,
+	(SELECT id FROM author WHERE id = 1),
+	NULL,
+	1
 ), (
 	"The Eye of the World",
-	(SELECT id FROM author WHERE id = 2)
+	1,
+	(SELECT id FROM author WHERE id = 2),
+	1,
+	1
 );

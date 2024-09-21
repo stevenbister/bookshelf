@@ -18,7 +18,7 @@
 		"generate": "drizzle-kit generate",
 		"migrate": "drizzle-kit migrate",
 		"studio": "drizzle-kit studio",
-		"seed": "wrangler d1 execute bookshelf --file=./drizzle/seed.sql"
+		"seed": "wrangler d1 execute bookshelf --remote --file=./drizzle/seed.sql"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20240919.0",
