@@ -3,9 +3,14 @@
 declare global {
 	namespace App {
 		interface Platform {
-			env: Env;
-			cf: CfProperties;
-			ctx: ExecutionContext;
+			env: {
+				DB: D1Database;
+			};
+			context: {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				waitUntil(promise: Promise<any>): void;
+			};
+			caches: CacheStorage & { default: Cache };
 		}
 	}
 }
