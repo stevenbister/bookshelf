@@ -1,8 +1,3 @@
-DELETE FROM status;
-DELETE FROM series;
-DELETE FROM book;
-DELETE FROM author;
-
 INSERT INTO status (
 	status
 ) VALUES (
@@ -14,43 +9,50 @@ INSERT INTO status (
 );
 
 INSERT INTO series (
-	id,
 	title
 ) VALUES (
-	1,
 	"The Wheel of Time"
 );
 
 INSERT INTO author (
-	id,
 	first_name,
 	last_name
 ) VALUES (
-	1,
 	"Neil",
 	"Gaiman"
 ), (
-	2,
 	"Robert",
 	"Jordan"
 );
 
 INSERT INTO book (
 	title,
-	book_number,
-	author_id,
-	series_id,
-	status
+	status_id
 ) VALUES (
 	"American Gods",
-	NULL,
-	(SELECT id FROM author WHERE id = 1),
-	NULL,
-	1
+	(SELECT id FROM status WHERE status = "read")
 ), (
 	"The Eye of the World",
-	1,
-	(SELECT id FROM author WHERE id = 2),
-	1,
-	1
+	(SELECT id FROM status WHERE status = "read")
 );
+
+INSERT INTO book_author (
+	author_id,
+	book_id
+) VALUES (
+	(SELECT id FROM author WHERE last_name = "Gaiman"),
+	(SELECT id FROM book WHERE title = "American Gods")
+), (
+	(SELECT id FROM author WHERE last_name = "Jordan"),
+	(SELECT id FROM book WHERE title = "The Eye of the World")
+)
+
+INSERT INTO book_series (
+	book_number,
+	book_id,
+	series_id
+) VALUES (
+	1,
+	(SELECT id FROM book WHERE title = "The Eye of the World"),
+	(SELECT id FROM series WHERE title = "The Wheel of Time")
+)
