@@ -22,6 +22,34 @@
       "when": 1726988110021,
       "tag": "0002_easy_prowler",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1726989523686,
+      "tag": "0003_sturdy_hardball",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1726989561856,
+      "tag": "0004_flat_colossus",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1726989902096,
+      "tag": "0005_talented_enchantress",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1726990092747,
+      "tag": "0006_bizarre_cobalt_man",
+      "breakpoints": true
     }
   ]
 }

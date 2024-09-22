@@ -1,5 +1,4 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
-import { author } from './authors';
 import { series } from './series';
 import { cover } from './cover';
 import { status } from './status';
@@ -10,8 +9,6 @@ export const book = sqliteTable('book', {
 	id: integer('id').primaryKey({ autoIncrement: true }),
 	title: text('title').notNull(),
 	blurb: text('blurb'),
-	bookNumber: integer('book_number'),
-	authorId: integer('author_id').references(() => author.id),
 	seriesId: integer('series_id').references(() => series.id),
 	coverId: integer('cover_id').references(() => cover.id),
 	statusId: integer('status_id').references(() => status.id)
