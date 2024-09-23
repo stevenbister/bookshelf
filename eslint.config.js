@@ -28,6 +28,11 @@ export default [
 		}
 	},
 	{
+		rules: {
+			'@typescript-eslint/consistent-type-imports': 'error'
+		}
+	},
+	{
 		ignores: ['build/', '.svelte-kit/', 'dist/']
 	}
 ];
