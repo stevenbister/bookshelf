@@ -4,5 +4,5 @@ export type Cover = typeof cover.$inferSelect;
 
 export const cover = sqliteTable('cover', {
 	id: integer('id').primaryKey({ autoIncrement: true }),
-	title: text('title')
+	url: text('url')
 });
