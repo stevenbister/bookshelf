@@ -10,6 +10,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { drizzle } from 'drizzle-orm/d1';
 import type { Status as StatusType } from '$lib/db/schema/status';
 import { cfBindingNotFound } from '$lib/utils/cfBindingNotFound';
+import { Cover } from '$lib/queries/cover';
 
 export const GET: RequestHandler = async ({ platform }) => {
 	if (!platform?.env.DB) cfBindingNotFound();
@@ -22,6 +23,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 	const bookSeries = new BookSeries(db);
 	const series = new Series(db);
 	const status = new Status(db);
+	const cover = new Cover(db);
 
 	console.log('Seeding data 🌱');
 
@@ -44,17 +46,27 @@ export const GET: RequestHandler = async ({ platform }) => {
 	);
 	console.log('Statuses created', seededStatus);
 
+	console.log('Creating covers...');
+	const seededCovers = await cover.add(
+		bookData.map(({cover}) => ({
+			url: cover
+		}))
+	);
+	console.log('Covers created', seededCovers);
+
 	console.log('Creating books...');
 
 	const seededBooks = await book.add(
 		await Promise.all(
-			bookData.map(async ({ title, blurb, status: sts }) => {
+			bookData.map(async ({ title, blurb, status: sts, cover: cvr }) => {
 				const statusId = (await status.getIdByStatus(sts as StatusType['status']))[0].id;
+				const coverId = (await cover.getIdByUrl(cvr))[0].id
 
 				return {
 					title,
 					blurb,
-					statusId
+					statusId,
+					coverId
 				};
 			})
 		)
