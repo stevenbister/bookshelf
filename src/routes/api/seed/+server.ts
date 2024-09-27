@@ -6,12 +6,13 @@ import { BookAuthor } from '$lib/queries/bookAuthor';
 import { BookSeries } from '$lib/queries/bookSeries';
 import { Series } from '$lib/queries/series';
 import { Status } from '$lib/queries/status';
-import { error, type RequestHandler } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { drizzle } from 'drizzle-orm/d1';
 import type { Status as StatusType } from '$lib/db/schema/status';
+import { cfBindingNotFound } from '$lib/utils/cfBindingNotFound';
 
 export const GET: RequestHandler = async ({ platform }) => {
-	if (!platform?.env.DB) error(500, 'Cloudflare D1 binding not found');
+	if (!platform?.env.DB) cfBindingNotFound();
 
 	const db = drizzle(platform.env.DB);
 
