@@ -8,7 +8,9 @@ export class Cover extends TableCommon<typeof cover> {
 		super(db, cover);
 	}
 
-	async getIdByUrl(url: string) {
+	async getIdByUrl(url: string | null) {
+		if (!url) return;
+
 		return await this.db
 			.select({
 				id: this.schema.id

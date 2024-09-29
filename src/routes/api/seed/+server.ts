@@ -48,7 +48,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 
 	console.log('Creating covers...');
 	const seededCovers = await cover.add(
-		bookData.map(({cover}) => ({
+		bookData.map(({ cover }) => ({
 			url: cover
 		}))
 	);
@@ -60,7 +60,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 		await Promise.all(
 			bookData.map(async ({ title, blurb, status: sts, cover: cvr }) => {
 				const statusId = (await status.getIdByStatus(sts as StatusType['status']))[0].id;
-				const coverId = (await cover.getIdByUrl(cvr))[0].id
+				const coverId = (await cover.getIdByUrl(cvr))?.[0].id;
 
 				return {
 					title,
@@ -90,29 +90,39 @@ export const GET: RequestHandler = async ({ platform }) => {
 	console.log('Creating authors...');
 
 	const seededAuthors = await author.add(
-		bookData.map(({ author: { first_name, last_name } }) => ({
-			first_name,
-			last_name
-		}))
+		[
+			...new Set(bookData.flatMap((b) => b.author).map((a) => `${a.first_name} ${a.last_name}`))
+		].map((fullName) => {
+			const [first_name, last_name] = fullName.split(' ');
+			return {
+				first_name,
+				last_name
+			};
+		})
 	);
 
-	console.log('Books created', seededAuthors);
+	console.log('Authors created', seededAuthors);
 
 	console.log('Creating book authors...');
 
-	const seededBookAuthors = await bookAuthor.add(
-		await Promise.all(
-			bookData.map(async ({ title, author: { first_name, last_name } }) => {
-				const authorId = (await author.getIdByName(first_name, last_name))[0].id;
-				const bookId = (await book.getIdByTitle(title))[0].id;
+	const bookAuthors = await Promise.all(
+		bookData.flatMap(async ({ title, author: a }) => {
+			const bookId = (await book.getIdByTitle(title))[0].id;
 
-				return {
-					authorId,
-					bookId
-				};
-			})
-		)
+			return Promise.all(
+				a.map(async ({ first_name, last_name }) => {
+					const authorId = (await author.getIdByName(first_name, last_name))[0].id;
+
+					return {
+						authorId,
+						bookId
+					};
+				})
+			);
+		})
 	);
+
+	const seededBookAuthors = await bookAuthor.add(bookAuthors.flat());
 
 	console.log('Book authors created', seededBookAuthors);
 
