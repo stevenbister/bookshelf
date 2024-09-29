@@ -35,6 +35,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 	await book.deleteAll();
 	await series.deleteAll();
 	await status.deleteAll();
+	await cover.deleteAll();
 
 	console.log('Tables reset');
 
@@ -48,9 +49,11 @@ export const GET: RequestHandler = async ({ platform }) => {
 
 	console.log('Creating covers...');
 	const seededCovers = await cover.add(
-		bookData.map(({ cover }) => ({
-			url: cover
-		}))
+		bookData
+			.filter(({ cover }) => !!cover)
+			.map(({ cover }) => ({
+				url: cover
+			}))
 	);
 	console.log('Covers created', seededCovers);
 
@@ -135,11 +138,11 @@ export const GET: RequestHandler = async ({ platform }) => {
 				.map(async ({ title, series: srs }) => {
 					const bookId = (await book.getIdByTitle(title))[0].id;
 					const seriesId = (await series.getIdByTitle(srs!.title))[0].id;
-					console.log({ seriesId });
 
 					return {
 						bookId,
-						seriesId
+						seriesId,
+						bookNumber: srs?.number
 					};
 				})
 		)
