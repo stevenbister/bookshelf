@@ -5,6 +5,7 @@ declare global {
 		interface Platform {
 			env: {
 				DB: D1Database;
+				ENVIRONMENT: 'development' | 'preview' | 'production';
 			};
 			context: {
 				// eslint-disable-next-line @typescript-eslint/no-explicit-any
