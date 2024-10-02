@@ -8,11 +8,12 @@ import { BookSeries } from '$lib/queries/bookSeries';
 import { Cover } from '$lib/queries/cover';
 import { Series } from '$lib/queries/series';
 import { Status } from '$lib/queries/status';
-import { cfBindingNotFound } from '$lib/utils/cfBindingNotFound';
-import type { RequestHandler } from '@sveltejs/kit';
+import { cfBindingNotFound, pageNotFound } from '$lib/utils/cfBindingNotFound';
+import { type RequestHandler } from '@sveltejs/kit';
 import { drizzle } from 'drizzle-orm/d1';
 
 export const GET: RequestHandler = async ({ platform }) => {
+	if (platform?.env.ENVIRONMENT !== 'development') pageNotFound();
 	if (!platform?.env.DB) cfBindingNotFound();
 
 	const CHUNK_SIZE = 10;
