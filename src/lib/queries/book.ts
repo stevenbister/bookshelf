@@ -7,7 +7,7 @@ import { book } from '$lib/db/schema/books';
 import { bookSeries } from '$lib/db/schema/bookSeries';
 import { series } from '$lib/db/schema/series';
 import { status } from '$lib/db/schema/status';
-import {cover} from '$lib/db/schema/cover';
+import { cover } from '$lib/db/schema/cover';
 
 export class Book extends TableCommon<typeof book> {
 	constructor(db: DbClient) {
