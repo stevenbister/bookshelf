@@ -10,6 +10,7 @@ import { Series } from '$lib/queries/series';
 import { Status } from '$lib/queries/status';
 import { cfBindingNotFound } from '$lib/utils/cfBindingNotFound';
 import { pageNotFound } from '$lib/utils/pageNotFound';
+import { slugify } from '$lib/utils/slugify';
 import type { RequestHandler } from '@sveltejs/kit';
 import { drizzle } from 'drizzle-orm/d1';
 
@@ -91,6 +92,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 
 					return {
 						title,
+						slug: slugify(title),
 						blurb,
 						statusId,
 						coverId
