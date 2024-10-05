@@ -1,0 +1,10 @@
+@layer utils {
+	.container {
+		margin: 0 auto;
+		padding-inline: var(--space--1);
+
+		&--m {
+			padding-inline: var(--space-2);
+		}
+	}
+}
