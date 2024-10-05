@@ -8,8 +8,9 @@ import { BookSeries } from '$lib/queries/bookSeries';
 import { Cover } from '$lib/queries/cover';
 import { Series } from '$lib/queries/series';
 import { Status } from '$lib/queries/status';
-import { cfBindingNotFound, pageNotFound } from '$lib/utils/cfBindingNotFound';
-import { type RequestHandler } from '@sveltejs/kit';
+import { cfBindingNotFound } from '$lib/utils/cfBindingNotFound';
+import { pageNotFound } from '$lib/utils/pageNotFound';
+import type { RequestHandler } from '@sveltejs/kit';
 import { drizzle } from 'drizzle-orm/d1';
 
 export const GET: RequestHandler = async ({ platform }) => {
