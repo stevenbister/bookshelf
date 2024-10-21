@@ -1,5 +1,6 @@
 import { bookData } from '$lib/data/seed/book';
 import { statusData } from '$lib/data/seed/status';
+import { Database } from '$lib/db/connection';
 import type { Status as StatusType } from '$lib/db/schema/status';
 import { Author } from '$lib/queries/author';
 import { Book } from '$lib/queries/book';
@@ -8,15 +9,12 @@ import { BookSeries } from '$lib/queries/bookSeries';
 import { Cover } from '$lib/queries/cover';
 import { Series } from '$lib/queries/series';
 import { Status } from '$lib/queries/status';
-import { cfBindingNotFound } from '$lib/utils/cfBindingNotFound';
 import { pageNotFound } from '$lib/utils/pageNotFound';
 import { slugify } from '$lib/utils/slugify';
 import type { RequestHandler } from '@sveltejs/kit';
-import { drizzle } from 'drizzle-orm/d1';
 
 export const GET: RequestHandler = async ({ platform }) => {
 	if (platform?.env.ENVIRONMENT !== 'development') pageNotFound();
-	if (!platform?.env.DB) cfBindingNotFound();
 
 	const CHUNK_SIZE = 10;
 
@@ -39,7 +37,7 @@ export const GET: RequestHandler = async ({ platform }) => {
 		}
 	}
 
-	const db = drizzle(platform.env.DB);
+	const db = Database.getInstance();
 
 	const author = new Author(db);
 	const book = new Book(db);
