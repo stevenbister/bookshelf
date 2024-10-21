@@ -6,7 +6,7 @@ export const load: PageServerLoad = async () => {
 	const db = Database.getInstance();
 	const book = new Book(db);
 
-	const books = await book.getBookDetails();
+	const books = await book.getBooksWithCover();
 
 	return {
 		books

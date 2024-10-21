@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { slugify } from '$lib/utils/slugify';
-
 	interface Props {
 		books: {
 			title: string;
+			slug: string;
 			cover: string | null;
 		}[];
 	}
@@ -14,7 +13,7 @@
 <ul class="grid">
 	{#each books as book}
 		<li class="grid-item">
-			<a href={slugify(book.title)} data-sveltekit-preload-data="tap" aria-label={book.title}>
+			<a href={book.slug} data-sveltekit-preload-data="tap" aria-label={book.title}>
 				<img src={book.cover} alt={book.title} />
 			</a>
 		</li>
