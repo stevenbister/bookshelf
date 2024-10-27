@@ -31,7 +31,7 @@ export class Book extends TableCommon<typeof book> {
 			.where(eq(this.schema.slug, slug));
 	}
 
-	async getBooks(filters?: { author?: number; series?: number }) {
+	async getBooks(filters?: { author?: number; series?: number; orderBy?: 'asc' | 'desc' }) {
 		type BookWithAuthors = Omit<BookType, 'blurb' | 'coverId' | 'statusId'> & {
 			authors: Author[];
 			cover: string | null;
@@ -91,14 +91,16 @@ export class Book extends TableCommon<typeof book> {
 		}
 
 		const sortedBooks = [...Object.values(groupedBySeries).flat()].toSorted((a, b) => {
+			const orderSign = filters?.orderBy === 'desc' ? -1 : 1;
+
 			if (a.series?.seriesAuthorId && b.series?.seriesAuthorId) {
-				return a.series.seriesAuthorId - b.series.seriesAuthorId;
+				return (a.series.seriesAuthorId - b.series.seriesAuthorId) * orderSign;
 			}
 
 			const authorA = a.authors[0]?.first_name ?? '';
 			const authorB = b.authors[0]?.first_name ?? '';
 
-			return authorA.localeCompare(authorB);
+			return authorA.localeCompare(authorB) * orderSign;
 		});
 
 		return sortedBooks;
