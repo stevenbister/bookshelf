@@ -10,6 +10,12 @@ import { groupBy } from '$lib/utils/groupBy';
 import { and, eq } from 'drizzle-orm';
 import { TableCommon } from './table';
 
+export type Filters = {
+	author?: number;
+	series?: number;
+	orderBy?: 'asc' | 'desc';
+};
+
 export class Book extends TableCommon<typeof book> {
 	constructor(db: DbClient) {
 		super(db, book);
@@ -31,7 +37,7 @@ export class Book extends TableCommon<typeof book> {
 			.where(eq(this.schema.slug, slug));
 	}
 
-	async getBooks(filters?: { author?: number; series?: number; orderBy?: 'asc' | 'desc' }) {
+	async getBooks(filters?: Filters) {
 		type BookWithAuthors = Omit<BookType, 'blurb' | 'coverId' | 'statusId'> & {
 			authors: Author[];
 			cover: string | null;
