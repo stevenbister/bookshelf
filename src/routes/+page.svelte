@@ -1,4 +1,5 @@
 <script lang="ts">
+	import FilterRoot from '$lib/components/Filter/FilterRoot.svelte';
 	import Grid from '$lib/components/Grid.svelte';
 	import type { PageData } from './$types';
 
@@ -6,6 +7,8 @@
 </script>
 
 {#if data.books?.length}
+	<FilterRoot />
+
 	<Grid books={data.books} />
 {:else}
 	<p>No books found</p>
