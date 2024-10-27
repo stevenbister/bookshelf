@@ -31,7 +31,7 @@ export class Book extends TableCommon<typeof book> {
 			.where(eq(this.schema.slug, slug));
 	}
 
-	async search(filters?: { author?: number; series?: number }) {
+	async getBooks(filters?: { author?: number; series?: number }) {
 		type BookWithAuthors = Omit<BookType, 'blurb' | 'coverId' | 'statusId'> & {
 			authors: Author[];
 			cover: string | null;

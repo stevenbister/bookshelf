@@ -8,7 +8,7 @@ export const load: PageServerLoad = async ({ url }) => {
 
 	const filters = Object.fromEntries(url.searchParams);
 
-	const books = await book.search(filters);
+	const books = await book.getBooks(filters);
 
 	return {
 		books
