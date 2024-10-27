@@ -1,5 +1,4 @@
-@layer reset, base, components, utils;
-@import '../lib/styles/reset';
-@import '../lib/styles/globals';
-@import '../lib/styles/base';
-@import '../lib/styles/utils';
+@forward '../lib/styles/reset';
+@forward '../lib/styles/globals';
+@forward '../lib/styles/base';
+@forward '../lib/styles/utils';
