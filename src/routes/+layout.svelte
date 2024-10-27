@@ -6,6 +6,6 @@
 
 <Header pathname={$page.url.pathname} />
 
-<main class="container">
+<main class="container py-2">
 	<slot />
 </main>

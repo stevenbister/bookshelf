@@ -6,9 +6,7 @@
 </script>
 
 {#if data.books?.length}
-	<div class="mt-2">
-		<Grid books={data.books} />
-	</div>
+	<Grid books={data.books} />
 {:else}
 	<p>No books found</p>
 {/if}
