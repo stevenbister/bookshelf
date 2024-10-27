@@ -7,7 +7,7 @@ import { cover } from '$lib/db/schema/cover';
 import { series, type Series } from '$lib/db/schema/series';
 import type { DbClient } from '$lib/db/types';
 import { groupBy } from '$lib/utils/groupBy';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { TableCommon } from './table';
 
 export class Book extends TableCommon<typeof book> {
@@ -31,7 +31,7 @@ export class Book extends TableCommon<typeof book> {
 			.where(eq(this.schema.slug, slug));
 	}
 
-	async search() {
+	async search(filters?: { author?: number; series?: number }) {
 		type BookWithAuthors = Omit<BookType, 'blurb' | 'coverId' | 'statusId'> & {
 			authors: Author[];
 			cover: string | null;
@@ -39,6 +39,8 @@ export class Book extends TableCommon<typeof book> {
 			seriesId?: Series['id'];
 			number?: number | null;
 		};
+
+		const { author: authorId, series: seriesId } = filters ?? {};
 
 		const results = await this.db
 			.select({
@@ -51,6 +53,12 @@ export class Book extends TableCommon<typeof book> {
 				number: bookSeries.bookNumber
 			})
 			.from(this.schema)
+			.where(
+				and(
+					authorId ? eq(author.id, authorId) : undefined,
+					seriesId ? eq(series.id, seriesId) : undefined
+				)
+			)
 			.leftJoin(cover, eq(this.schema.coverId, cover.id))
 			.leftJoin(bookAuthor, eq(this.schema.id, bookAuthor.bookId))
 			.leftJoin(author, eq(bookAuthor.authorId, author.id))
