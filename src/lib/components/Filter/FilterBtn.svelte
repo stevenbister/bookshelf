@@ -16,6 +16,7 @@
 			border: none;
 			appearance: none;
 			background: none;
+			cursor: pointer;
 			padding-block: var(--space--2);
 		}
 	}

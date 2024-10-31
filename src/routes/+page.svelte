@@ -7,7 +7,7 @@
 </script>
 
 {#if data.books?.length}
-	<FilterRoot />
+	<FilterRoot authors={data.authors} seriesTitles={data.seriesTitles} />
 
 	<Grid books={data.books} />
 {:else}
