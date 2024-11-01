@@ -1,0 +1,1 @@
+ALTER TABLE `series` ADD `series_author_id` integer REFERENCES author(id);

@@ -1,0 +1,11 @@
+@mixin shadow($color, $spread: 6px -6px -6px 6px) {
+	position: relative;
+
+	&::after {
+		position: absolute;
+		border: var(--border-2);
+		background-color: $color;
+		content: '';
+		inset: $spread;
+	}
+}

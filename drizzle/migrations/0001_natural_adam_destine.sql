@@ -1,0 +1,1 @@
+ALTER TABLE `cover` RENAME COLUMN `title` TO `url`;

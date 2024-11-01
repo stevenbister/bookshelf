@@ -1,0 +1,99 @@
+@use 'sass:map';
+
+@layer utils {
+	$steps: (-3, -2, -1, 0, 1, 2, 3, 4, 5);
+
+	$config: (
+		(
+			property: 'margin',
+			prefix: 'm',
+			value: $steps
+		),
+		(
+			property: 'margin-block',
+			prefix: 'my',
+			value: $steps
+		),
+		(
+			property: 'margin-inline',
+			prefix: 'mx',
+			value: $steps
+		),
+		(
+			property: 'margin-block-start',
+			prefix: 'mt',
+			value: $steps
+		),
+		(
+			property: 'margin-block-end',
+			prefix: 'mb',
+			value: $steps
+		),
+		(
+			property: 'margin-inline-start',
+			prefix: 'ml',
+			value: $steps
+		),
+		(
+			property: 'margin-inline-end',
+			prefix: 'mr',
+			value: $steps
+		),
+		(
+			property: 'padding',
+			prefix: 'p',
+			value: $steps
+		),
+		(
+			property: 'padding-block',
+			prefix: 'py',
+			value: $steps
+		),
+		(
+			property: 'padding-inline',
+			prefix: 'px',
+			value: $steps
+		),
+		(
+			property: 'padding-block-start',
+			prefix: 'pt',
+			value: $steps
+		),
+		(
+			property: 'padding-block-end',
+			prefix: 'pb',
+			value: $steps
+		),
+		(
+			property: 'padding-inline-start',
+			prefix: 'pl',
+			value: $steps
+		),
+		(
+			property: 'padding-inline-end',
+			prefix: 'pr',
+			value: $steps
+		)
+	);
+
+	.container {
+		margin: 0 auto;
+		padding-inline: var(--space--1);
+
+		&-m {
+			padding-inline: var(--space-2);
+		}
+	}
+
+	@each $c in $config {
+		$property: map.get($c, 'property');
+		$prefix: map.get($c, 'prefix');
+		$values: map.get($c, 'value');
+
+		@each $value in $values {
+			.#{$prefix}-#{$value} {
+				#{$property}: var(--space-#{$value});
+			}
+		}
+	}
+}
